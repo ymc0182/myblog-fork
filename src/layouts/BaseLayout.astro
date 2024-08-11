@@ -1,7 +1,4 @@
 ---
-import HeaderComponent from "./components/HeaderComponent.astro";
-import FooterComponent from "./components/FooterComponent.astro";
-
 const { PageName,PageTitle } = Astro.props;
 ---
 
@@ -16,13 +13,9 @@ const { PageName,PageTitle } = Astro.props;
 		<meta name="description" content="袁某人的个人博客，记录生活和开发笔记" />
 		<title>{PageTitle && PageTitle+" - "} 袁某人博客</title>
 	</head>
-	<body ontouchstart="ontouchstart" class="h-full w-full dark:bg-neutral-900 dark:text-neutral-500">
+	<body ontouchstart="ontouchstart" class="h-full w-full antialiased scroll-smooth dark:bg-neutral-900 dark:text-neutral-400">
 
-        <HeaderComponent />
-		
         <slot />
-
-        <FooterComponent />
 		
 	</body>
 </html>
