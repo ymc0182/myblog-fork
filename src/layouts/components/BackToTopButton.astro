@@ -1,0 +1,26 @@
+<button id="back_to_top_btn" class="hidden rounded-full p-1 bg-neutral-200 transition active:scale-95 dark:bg-neutral-800">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
+    </svg>
+</button>
+
+<script>
+    const backToTopButton = document.getElementById('back_to_top_btn');
+
+	function toggleBackToTopButton(){
+		if(this.window.pageYOffset > 50){
+			backToTopButton.style.display = 'block';
+		}else{
+			backToTopButton.style.display = 'none';
+		}
+	}
+
+	backToTopButton.addEventListener('click', function(event) {
+		event.preventDefault();
+		window.scrollTo({
+			top:0,
+			behavior: 'smooth'
+		});
+	});
+	window.addEventListener('scroll', toggleBackToTopButton);
+</script>
