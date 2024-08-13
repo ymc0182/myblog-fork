@@ -24,6 +24,23 @@ const { frontmatter  } = Astro.props;
         </article>
     </main>
 
+    <section class="bg-neutral-50 dark:bg-neutral-800/30">
+        <div class="container mx-auto px-6 py-4 flex items-center text-sm font-thin leading-loose text-neutral-400 dark:text-neutral-600">
+            <div >
+                <p>本文链接：</p>
+                <p>发布时间：</p>
+                <p>作者：</p>
+                <p>声明:</p>
+            </div>
+            <div >
+                <p>https://baidu.com</p>
+                <p>2024-08-12</p>
+                <p>袁某人</p>
+                <p class="inline-block text-xs border rounded px-1 border-neutral-200 dark:border-neutral-700">原创</p>
+            </div>
+        </div>
+    </section>
+
     <FooterComponent />
 </BaseLayout>
 
@@ -41,7 +58,17 @@ const { frontmatter  } = Astro.props;
         #post_content h2 { @apply text-xl;  }
         #post_content h3 { @apply text-lg;  }
 
-        #post_content p,  #post_content ul, #post_content ol, #post_content pre, #post_content h1, #post_content h2, #post_content h3, #post_content h4, #post_content h5, #post_content h6 {
+        #post_content p, 
+        #post_content ul, 
+        #post_content ol, 
+        #post_content pre, 
+        #post_content h1, 
+        #post_content h2, 
+        #post_content h3, 
+        #post_content h4, 
+        #post_content h5, 
+        #post_content h6,
+        #post_content hr {
             @apply my-5;
         }
 
