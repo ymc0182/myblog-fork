@@ -25,24 +25,45 @@ const { frontmatter  } = Astro.props;
     </main>
 
     <section class="bg-neutral-50 dark:bg-neutral-800/30">
-        <div class="container mx-auto px-6 py-4 flex items-center text-sm font-thin leading-loose text-neutral-400 dark:text-neutral-600">
+        <div class="container mx-auto px-6 py-4 flex items-center text-sm font-thin leading-relaxed text-neutral-400/70 dark:text-neutral-600">
             <div >
                 <p>本文链接：</p>
                 <p>发布时间：</p>
                 <p>作者：</p>
-                <p>声明:</p>
+                <p>版权:</p>
             </div>
             <div >
-                <p>https://baidu.com</p>
-                <p>2024-08-12</p>
-                <p>袁某人</p>
-                <p class="inline-block text-xs border rounded px-1 border-neutral-200 dark:border-neutral-700">原创</p>
+                <p>{Astro.url}</p>
+                <p>{frontmatter.date && frontmatter.date.toString().slice(0,10)}</p>
+                <p>{frontmatter.author && frontmatter.author}</p>
+                <p class="inline-block text-xs border rounded px-1 border-neutral-200 dark:border-neutral-700">{frontmatter.copy ? frontmatter.copy : '未声明'}</p>
             </div>
         </div>
     </section>
 
+    <section class="container mx-auto p-6">
+        <div class="giscus"></div>
+    </section>
+
     <FooterComponent />
 </BaseLayout>
+
+<script src="https://giscus.app/client.js"
+        data-repo="ymc0182/myblog"
+        data-repo-id="R_kgDOMiAgoA"
+        data-category="General"
+        data-category-id="DIC_kwDOMiAgoM4Chifv"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 
 <style is:global>
     @tailwind base;
