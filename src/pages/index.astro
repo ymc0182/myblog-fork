@@ -6,7 +6,7 @@ const allPosts = await Astro.glob('./posts/*.*');
 
 <PageLayout>
 
-	<main class="container mx-auto px-6 pt-8 pb-2 space-y-6">
+	<main class="container mx-auto p-6 space-y-6">
 
 		{allPosts.map((post) => 
 			<article>
