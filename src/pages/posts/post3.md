@@ -1,6 +1,6 @@
 ---
 title: '我的第3篇博客文章, 这是我 Astro 博客的第3篇文章。这是我 Astro 博客的第3篇文章这是我 Astro 博客的第3篇文章.这是我 Astro 博客的第3篇文章'
-pubDate: 2022-07-01
+date: 2022-07-01
 description: '这是我 Astro 博客的第3篇文章。这是我 Astro 博客的第3篇文章这是我 Astro 博客的第3篇文章.这是我 Astro 博客的第3篇文章'
 author: 'Astro 学习者'
 image:

@@ -4,9 +4,7 @@ export default {
 	theme: {
 		screens: {
 			sm: '480px',
-			md: '768px',
-			lg: '976px',
-			xl: '1080px',
+			lg: '800px',
 		  },
 		extend: {},
 	},
