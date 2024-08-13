@@ -1,0 +1,13 @@
+---
+const links = {
+    首页 : '/',
+    友链 : '/links',
+    关于 : '/about'
+};
+---
+
+<nav class="flex flex-wrap gap-2.5">
+    {Object.entries(links).map(([name, path]) => 
+        <a class="transition active:scale-95" href={path}>{name}</a>
+    )}
+</nav>

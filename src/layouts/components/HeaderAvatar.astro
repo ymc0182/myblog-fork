@@ -1,0 +1,32 @@
+<div class="w-10 h-10 rounded-xl border-2 border-dashed p-0.5 dark:border-neutral-800">
+    <img id="avatar" class="rounded-xl" src="https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309?s=400&amp;f=mp">
+    <button id="back_to_top_btn" class="hidden items-center justify-center w-full h-full rounded-xl bg-neutral-200 transition active:scale-95 dark:bg-neutral-800">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
+        </svg>
+    </button>
+</div>
+
+<script is:inline>
+    const backToTopButton   = document.getElementById('back_to_top_btn');
+    const avatar            = document.getElementById('avatar');
+
+	function toggleBackToTopButton(){
+		if(this.window.pageYOffset > 500){
+            avatar.style.display            = 'none';
+			backToTopButton.style.display   = 'flex';
+		}else{
+			backToTopButton.style.display   = 'none';
+            avatar.style.display            = 'block';
+		}
+	}
+
+	backToTopButton.addEventListener('click', function(event) {
+		event.preventDefault();
+		window.scrollTo({
+			top:0,
+			behavior: 'smooth'
+		});
+	});
+	window.addEventListener('scroll', toggleBackToTopButton);
+</script>
