@@ -4,10 +4,10 @@ import HeaderComponent from "./components/HeaderComponent.astro";
 import FooterComponent from "./components/FooterComponent.astro";
 import Comment from "../components/Comment.astro";
 
-const { frontmatter  } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout >
+<BaseLayout PageTitle={frontmatter.title}>
     <HeaderComponent />
     
     <main class="container mx-auto px-6 py-2">
