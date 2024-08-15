@@ -1,8 +1,8 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import Friend from "../../components/Friend.astro";
-import Details from "../../components/Details.astro";
-import links from "./_links.json";
+import DetailsComponent from "../../components/DetailsComponent.astro";
+import links from "./links.json";
 import Comment from "../../components/Comment.astro";
 ---
 
@@ -16,7 +16,7 @@ import Comment from "../../components/Comment.astro";
         </section>
 
         <section class="px-3 mt-6">
-            <Details title="友站要求和规范">
+            <DetailsComponent title="友站要求和规范">
                 <p>1、本站偏于生活类个人博客，请资源站、纯技术大佬回避。</p>
                 <p>2、贵站 UI 要简介规范，合理处理 404。</p>
                 <p>3、请不要第一次来访就索要，这种行为很不礼貌，也不负责任。</p>
@@ -25,7 +25,7 @@ import Comment from "../../components/Comment.astro";
                 <p>- 名称：袁某博客</p>
                 <p>- 链接：https://jb18.cm</p>
                 <p>- 头像：[5FBB13B635295D1226A17B782951C309] MD5自行引用</p>
-            </Details>
+            </DetailsComponent>
         </section>
 
         <section class="px-3 mt-6">
