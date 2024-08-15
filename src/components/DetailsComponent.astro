@@ -13,3 +13,9 @@ const {title} =Astro.props;
         <slot />
     </div>
 </details>
+
+<style is:global>
+    details>summary::marker {
+        display: none;
+    }
+</style>
