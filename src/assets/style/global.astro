@@ -1,0 +1,64 @@
+<style is:global>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+
+        #post_content h1, #post_content h2, #post_content h3, #post_content h4, #post_content h5, #post_content h6 {
+           @apply font-[500] leading-normal;
+        }
+        #post_content h1 { @apply text-2xl; }
+        #post_content h2 { @apply text-xl;  }
+        #post_content h3 { @apply text-lg;  }
+
+        #post_content p, 
+        #post_content ul, 
+        #post_content ol, 
+        #post_content pre, 
+        #post_content h1, 
+        #post_content h2, 
+        #post_content h3, 
+        #post_content h4, 
+        #post_content h5, 
+        #post_content h6,
+        #post_content hr {
+            @apply my-5;
+        }
+
+        #post_content a {
+            @apply after:content-['_↗'] text-blue-600 dark:text-blue-800;
+        }
+        #post_content hr {
+            @apply border-neutral-800;
+        }
+        #post_content img {
+            @apply w-auto max-w-full;
+        }
+        #post_content pre {
+            @apply block overflow-auto max-h-[50vh] p-3 rounded;
+        }
+        #post_content pre::-webkit-scrollbar {
+            @apply w-0 h-2;
+        }
+        #post_content pre::-webkit-scrollbar-thumb {
+            @apply rounded-full bg-neutral-400;
+        }
+
+        #post_content :not(pre)>code, #post_content kbd {
+            @apply rounded-md px-1.5 py-0.5 text-sm font-light border border-neutral-200 bg-neutral-50 text-neutral-500 dark:bg-neutral-800/50 dark:border-neutral-800;
+        }
+
+        #post_content kbd {
+            @apply inline-flex gap-1 items-center shadow rounded px-1.5 py-0.5
+        }
+
+        #post_content kbd::before {
+            @apply w-3 h-3;
+            content: "";
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+</style>
