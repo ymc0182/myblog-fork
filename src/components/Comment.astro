@@ -1,5 +1,6 @@
 ---
-const styleURL = Astro.url.origin + '/style/giscus.css';
+const styleURL = new URL('/style/giscus.css', Astro.url);
+console.log(styleURL);
 ---
 <div class="giscus"></div>
 
