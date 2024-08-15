@@ -294,4 +294,7 @@ main .gsc-reply-author>div>span {
    
 }
 
+main .gsc-comment-content, main .gsc-reply-content {
+    font-size: 1rem;
+}
 
