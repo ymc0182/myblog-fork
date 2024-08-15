@@ -1,4 +1,5 @@
 ---
+layout: "../../layouts/PostLayout.astro"
 title: '我的第2篇博客文章'
 date: 2022-07-01
 description: '这是我 Astro 博客的第2篇文章。'
