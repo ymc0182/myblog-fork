@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro"
 import HeaderComponent from "./components/HeaderComponent.astro";
 import FooterComponent from "./components/FooterComponent.astro";
+import Comment from "../components/Comment.astro";
 
 const { frontmatter  } = Astro.props;
 ---
@@ -40,28 +41,11 @@ const { frontmatter  } = Astro.props;
     </section>
 
     <section class="container mx-auto p-6">
-        <div class="giscus"></div>
+        <Comment />
     </section>
 
     <FooterComponent />
 </BaseLayout>
-
-<script src="https://giscus.app/client.js"
-        data-repo="ymc0182/myblog"
-        data-repo-id="R_kgDOMiAgoA"
-        data-category="General"
-        data-category-id="DIC_kwDOMiAgoM4Chifv"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
 
 <style is:global>
     @tailwind base;

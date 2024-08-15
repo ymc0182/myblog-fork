@@ -1,0 +1,25 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import Friend from "../../components/Friend.astro";
+import Details from "../../components/details.astro";
+import links from "./links.json";
+---
+
+<PageLayout PageTitle="友链">
+    <main class="container mx-auto py-6 px-3">
+
+        <section class="grid gap-5 grid-cols-2 lg:grid-cols-3">
+            {links.map((link)=> 
+                <Friend link={link} />
+            )}
+        </section>
+
+        <section class="px-3 mt-6">
+            <Details title="友站要求和规范">
+                <p>本站偏于生活类个人博客，不要资源站、纯技术博客。</p>
+                <p>贵站 UI 要简介规范</p>
+            </Details>
+        </section>
+
+    </main>
+</PageLayout>
