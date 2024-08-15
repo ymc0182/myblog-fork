@@ -1,3 +1,7 @@
+---
+const styleURL = new URL('/style/giscus.css', Astro.url);
+console.log(styleURL);
+---
 <div class="giscus"></div>
 
 <script src="https://giscus.app/client.js"
@@ -10,7 +14,7 @@
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme="http://localhost:4321/style/giscus.css"
+        data-theme= {styleURL}
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
