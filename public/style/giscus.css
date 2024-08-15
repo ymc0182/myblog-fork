@@ -145,7 +145,7 @@ main .gsc-loading-image {
         --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
         --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
         --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
-        --color-btn-text: #c9d1d9;
+        --color-btn-text: #a3a3a3;
         --color-btn-bg: #262626;
         --color-btn-border: #f0f6fc1a;
         --color-btn-shadow: 0 0 #0000;
@@ -171,12 +171,12 @@ main .gsc-loading-image {
         --color-segmented-control-bg: #262626;
         --color-segmented-control-button-bg: #171717;
         --color-segmented-control-button-selected-border: #6e7681;
-        --color-fg-default: #e6edf3;
+        --color-fg-default: #a3a3a3;
         --color-fg-muted: #7d8590;
         --color-fg-subtle: #6e7681;
-        --color-canvas-default: inset;
+        --color-canvas-default: #262626;
         --color-canvas-overlay: #161b22;
-        --color-canvas-inset: #262626;
+        --color-canvas-inset: rgb(23 23 23 / .7) ;
         --color-canvas-subtle: inset;
         --color-border-default: #30363d;
         --color-border-muted: #21262d;
@@ -244,7 +244,6 @@ main .gsc-comment-box-write>div {
 }
 
 main .gsc-reactions>div {
-    justify-content: start !important;
     margin-top: 2rem !important;
 }
 
@@ -270,4 +269,27 @@ main .input-contrast:focus {
 
 main .gsc-upvote-button:disabled {
     color: var(--color-accent-muted);
+}
+
+main .gsc-timeline .gsc-comment>div {
+    border-radius: .5rem !important;
+} 
+
+main .gsc-timeline .gsc-comment .gsc-reply-box button {
+    border-radius: 9999px !important;
+    padding-inline-start: .75rem !important;
+    
+}
+
+main .gsc-reactions-menu>div {
+    border-radius: .4rem !important;
+    overflow: hidden;
+}
+
+main .gsc-reactions-menu>div button {
+    border-radius: .25rem;
+}
+
+main .gsc-reply-author>div>span {
+   
 }

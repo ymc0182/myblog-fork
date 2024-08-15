@@ -19,3 +19,8 @@ const styleURL = new URL('/style/giscus.css', Astro.url);
         crossorigin="anonymous"
         async>
 </script>
+
+<script>
+        var author = document.querySelector('.giscus .gsc-reply-author>span');
+        author.innerHTML = "博主";
+</script>
