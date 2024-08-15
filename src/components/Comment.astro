@@ -1,6 +1,6 @@
 ---
 const styleURL = new URL('/style/giscus.css', Astro.url);
-console.log(styleURL.href);
+console.log(styleURL);
 ---
 
 <div class="giscus"></div>
@@ -15,7 +15,7 @@ console.log(styleURL.href);
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme= {styleURL.href}
+        data-theme= "https://jb18.cm/style/giscus.css"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
