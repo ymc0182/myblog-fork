@@ -1,8 +1,9 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import Friend from "../../components/Friend.astro";
-import Details from "../../components/details.astro";
+import Details from "../../components/Details.astro";
 import links from "./links.json";
+import Comment from "../../components/Comment.astro";
 ---
 
 <PageLayout PageTitle="友链">
@@ -16,9 +17,19 @@ import links from "./links.json";
 
         <section class="px-3 mt-6">
             <Details title="友站要求和规范">
-                <p>本站偏于生活类个人博客，不要资源站、纯技术博客。</p>
-                <p>贵站 UI 要简介规范</p>
+                <p>1、本站偏于生活类个人博客，请资源站、纯技术大佬回避。</p>
+                <p>2、贵站 UI 要简介规范，合理处理 404。</p>
+                <p>3、请不要第一次来访就索要，这种行为很不礼貌，也不负责任。</p>
+                <p>友链就像一张蜘蛛网，把兴趣相同的人编织在一起，让爬虫知道这张蜘蛛网的属性，能带来更多曝光率也能见证我们的友谊，我们有各自不同的方向可能不适合互站，但不代表不能做朋友。</p>
+                <br>
+                <p>- 名称：袁某博客</p>
+                <p>- 链接：https://jb18.cm</p>
+                <p>- 头像：[5FBB13B635295D1226A17B782951C309] MD5自行引用</p>
             </Details>
+        </section>
+
+        <section class="px-3 mt-6">
+            <Comment />
         </section>
 
     </main>
