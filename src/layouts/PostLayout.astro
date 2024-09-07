@@ -1,5 +1,4 @@
 ---
-import "../assets/style/global.astro";
 import BaseLayout from "./BaseLayout.astro"
 import HeaderComponent from "./components/HeaderComponent.astro";
 import FooterComponent from "./components/FooterComponent.astro";
@@ -22,7 +21,13 @@ const { frontmatter } = Astro.props;
                     <span class="border-b border-dashed border-neutral-400/70 dark:border-neutral-600">{frontmatter.date.toString().slice(0,10)}</span>
                 </div>
             </section>
-            <slot role="article" />
+            <div class="prose prose-sm prose-neutral max-w-none prose-img:rounded-xl prose-a:text-blue-600 dark:prose-invert">
+                <slot role="article" />
+            </div>
+
+            <div class="prose mt-96 prose-neutral max-w-none prose-img:rounded-xl prose-a:text-blue-600 dark:prose-invert">
+                <slot role="article" />
+            </div>
         </article>
     </main>
 
