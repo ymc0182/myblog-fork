@@ -13,7 +13,7 @@ const { PageName,PageTitle } = Astro.props;
 		<meta name="description" content="袁某人的个人博客，记录生活和开发笔记" />
 		<title>{PageTitle && PageTitle + " - "} 袁某人博客</title>
 	</head>
-	<body ontouchstart="ontouchstart" class="h-full w-full antialiased scroll-smooth bg-white break-words text-neutral-800 lg:subpixel-antialiased dark:bg-neutral-900 dark:text-neutral-400">
+	<body ontouchstart="ontouchstart" class="h-full w-full antialiased scroll-smooth bg-white break-words text-neutral-800 font-serif lg:subpixel-antialiased dark:bg-neutral-900 dark:text-neutral-400">
 
         <slot />
 		
@@ -32,7 +32,7 @@ const { PageName,PageTitle } = Astro.props;
 	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
 </script>
 
-<style>
+<!-- <style>
 	@font-face {
 		font-family: 'zql';
 		src: url('../assets/fonts/zql.woff2') format('woff2'),
@@ -44,11 +44,9 @@ const { PageName,PageTitle } = Astro.props;
 	}
 
 	::-webkit-scrollbar{
-		/* display:none */
 	}
 
 	body {
 		font-family: "zql" ,"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
-		/* font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; */
 	}
-</style>
+</style> -->
