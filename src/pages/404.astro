@@ -1,15 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+import MarkdownLayout from "../layouts/MarkdownLayout.astro"
 
 const PageTitle = "🫣找不到页面";
 ---
 
 <BaseLayout PageTitle = {PageTitle}>
     <main class="h-screen container mx-auto px-8 flex items-center">
-        <section class="prose prose-neutral prose-invert">
-            <h1>404</h1>
-            <p>当前链接错误，请检查浏览器地址，如果是网站的问题可以给我发送 <a href="mailto:wo@jb18.cm">邮件</a> 或 <a href="/ly">留言</a>，谢谢❤️</p>
-            <a href="/" >前往首页</a>
+        <section>
+            <MarkdownLayout>
+                <h1>404</h1>
+                <p>当前链接错误，请检查浏览器地址，如果是网站的问题可以给我发送 <a href="mailto:wo@jb18.cm">邮件</a> 或 <a href="/ly">留言</a>，谢谢❤️</p>
+                <a href="/" >前往首页</a>
+            </MarkdownLayout>
         </section>
     </main>
 </BaseLayout>

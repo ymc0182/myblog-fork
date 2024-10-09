@@ -1,17 +1,14 @@
 ---
-import Comment from "../../components/Comment.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
-
-
+import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
 ---
 
 <PageLayout PageTitle="关于">
-    <main class="container mx-auto p-6">
-        <article id="post_content" class="text-base align-middle tracking-wider leading-relaxed text-justify overflow-hidden">
-            <slot />
-        </article>
-        <section class="mt-6">
-            <Comment />
-        </section>
+    <main class="container mx-auto p-8">
+        <MarkdownLayout>
+            <article>
+                <slot />
+            </article>
+        </MarkdownLayout>
     </main>
 </PageLayout>
