@@ -1,4 +1,13 @@
-<footer class="container mx-auto p-8 space-y-6">
-    <div class="border-t border-dashed border-neutral-200"></div>
-        <p>&copy; 2024 袁某博客</p>
+---
+import NavLinks from "./NavLinks.astro"
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="container mx-auto px-8">
+    <div class="border-t border-dashed border-neutral-200 dark:border-neutral-600"></div>
+    <div class="py-8 space-y-5 text-sm">
+        <NavLinks />
+        <p>&copy; {currentYear} 袁某博客</p>
+    </div>
 </footer>
