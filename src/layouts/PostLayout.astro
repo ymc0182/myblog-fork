@@ -2,7 +2,7 @@
 import BaseLayout from "./BaseLayout.astro"
 import HeaderComponent from "./components/HeaderComponent.astro";
 import FooterComponent from "./components/FooterComponent.astro";
-import Comment from "../components/Comment.astro";
+import { formatDate } from "../utils/formatDate";
 
 const { frontmatter } = Astro.props;
 ---
@@ -10,50 +10,12 @@ const { frontmatter } = Astro.props;
 <BaseLayout PageTitle={frontmatter.title}>
     <HeaderComponent />
     
-    <main class="container mx-auto px-6 py-2">
-        <article id="post_content" class="text-base align-middle tracking-wider leading-relaxed text-justify overflow-hidden">
-            <h1 class="text-2xl my-0 leading-normal">{frontmatter.title}</h1>
-            <section class="flex flex-wrap gap-5 items-center my-5 text-xs text-neutral-400 dark:text-neutral-600">
-                <div class="flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                    </svg>
-                    <span class="border-b border-dashed border-neutral-400/70 dark:border-neutral-600">{frontmatter.date.toString().slice(0,10)}</span>
-                </div>
-            </section>
-            <div class="prose prose-sm prose-neutral max-w-none prose-img:rounded-xl prose-a:text-blue-600 dark:prose-invert">
-                <slot role="article" />
-            </div>
-
-
-            <div class=" prose mt-96 font-light max-w-none prose-img:rounded-xl prose-a:text-blue-600 dark:prose-invert">
-                <slot role="article" />
-            </div>
-
-            
+    <main class="container mx-auto p-8">
+        <article class="prose prose-neutral max-w-none prose-img:rounded-xl prose-a:text-blue-500 dark:prose-invert">
+            <h1 class="mb-0">{frontmatter.title}</h1>
+            <p><time>{formatDate(frontmatter.date)}</time></p>
+            <slot />
         </article>
     </main>
-
-    <section class="bg-neutral-50 dark:bg-neutral-800/30">
-        <div class="container mx-auto px-6 py-4 flex items-center text-xs font-thin leading-relaxed lg:text-sm text-neutral-400 dark:text-neutral-500">
-            <div>
-                <p>链接：</p>
-                <p>作者：</p>
-                <p>版权：</p>
-            </div>
-            <div>
-                <p>{Astro.url}</p>
-                <p>{frontmatter.author && frontmatter.author}</p>
-                <p>{frontmatter.copy ? frontmatter.copy : '未声明'}</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container mx-auto p-6">
-        <Comment />
-    </section>
-
     <FooterComponent />
 </BaseLayout>
-
-<style is:global></style>
