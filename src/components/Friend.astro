@@ -2,7 +2,7 @@
 const {link} = Astro.props;
 ---
 <a href={link.url} class="flex px-3 py-2 rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-800">
-    {link.avatar && (<img class="w-10 h-10 rounded-lg mr-2" src={link.avatar} alt={link.name}>)}
+    {link.avatar && (<img loading="lazy" class="w-10 h-10 rounded-lg mr-3 shrink-0" src={link.avatar} alt={link.name}>)}
     <div>
         <h4>{link.name}</h4>
         <p class="text-sm text-neutral-500 line-clamp-1">{link.desc}</p>
