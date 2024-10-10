@@ -6,12 +6,11 @@
 </div>
 
 <script is:inline>
-    const loadTimeOut = setTimeout(function() {
-        document.getElementById('loading-layout-tip').style.display = "block";
-    }, 5000);
-
     window.addEventListener('DOMContentLoaded', function() {
         clearTimeout(loadTimeOut);
         document.getElementById('loading-layout').style.display = "none";
     });
+    const loadTimeOut = setTimeout(function() {
+        document.getElementById('loading-layout-tip').style.display = "block";
+    }, 5000);
 </script>
