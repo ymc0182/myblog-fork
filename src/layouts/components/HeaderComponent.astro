@@ -15,7 +15,7 @@ import HeaderAvatar from "./HeaderAvatar.astro"
     <HeaderAvatar />
 </header>
 
-<script>
+<script is:inline>
     const loading_icon_btn = document.getElementById('loading-icon-btn');
     window.onload = function(){
         loading_icon_btn.style.display = "none";
