@@ -1,5 +1,5 @@
 ---
-// import LoadingCompent from "./components/LoadingCompent.astro";
+import LoadingCompent from "./components/LoadingCompent.astro";
 
 const { PageTitle } = Astro.props;
 ---
@@ -15,7 +15,7 @@ const { PageTitle } = Astro.props;
 		<title>{PageTitle && PageTitle + " - "} 袁某人博客</title>
 	</head>
 	<body ontouchstart="ontouchstart" class="h-full w-full antialiased scroll-smooth bg-white break-words text-neutral-800 lg:subpixel-antialiased dark:bg-neutral-900 dark:text-neutral-400">
-		
+		<LoadingCompent />
 		<slot />
 	</body>
 </html>
