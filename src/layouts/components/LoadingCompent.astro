@@ -10,8 +10,8 @@
         document.getElementById('loading-layout-tip').style.display = "block";
     }, 5000);
 
-    window.onload = function() {
+    window.addEventListener('DOMContentLoaded', function() {
         clearTimeout(loadTimeOut);
         document.getElementById('loading-layout').style.display = "none";
-    };
+    });
 </script>
