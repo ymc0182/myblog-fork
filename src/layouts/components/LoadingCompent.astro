@@ -1,0 +1,17 @@
+<div id="loading-layout" class="fixed w-full h-full top-0 left-0 z-[99999] bg-neutral-950/70 backdrop-blur-xl flex justify-center items-center">
+    <div class="text-neutral-400 text-lg text-center">
+        <p class="">加载中...</p>
+        <p id="loading-layout-tip" class="hidden">海外资源加载慢试试魔法</p>
+    </div>
+</div>
+
+<script>
+    const isLoad = true;
+    const loadTimeOut = setTimeout(function() {
+        document.getElementById('loading-layout-tip').style.display = "block";
+    }, 3000);
+
+    window.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('loading-layout').style.display = "none";
+    });
+</script>

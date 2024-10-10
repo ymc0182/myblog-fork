@@ -1,4 +1,6 @@
 ---
+import LoadingCompent from "./components/LoadingCompent.astro";
+
 const { PageTitle } = Astro.props;
 ---
 <html lang="zh">
@@ -13,7 +15,8 @@ const { PageTitle } = Astro.props;
 		<title>{PageTitle && PageTitle + " - "} 袁某人博客</title>
 	</head>
 	<body ontouchstart="ontouchstart" class="h-full w-full antialiased scroll-smooth bg-white break-words text-neutral-800 lg:subpixel-antialiased dark:bg-neutral-900 dark:text-neutral-400">
-        <slot />
+        <LoadingCompent />
+		<slot />
 	</body>
 </html>
 
@@ -34,11 +37,12 @@ const { PageTitle } = Astro.props;
 		font-family: 'zql';
 		src: url('../assets/fonts/zql.woff2') format('woff2'),
 			url('../assets/fonts/zql.woff') format('woff');
+		font-display: swap;
 	}
-	@font-face {
+	/* @font-face {
 		font-family: 'hm';
 		src: url('../assets/fonts/hm.woff2') format('woff2'),
-	}
+	} */
 
 	::-webkit-scrollbar{
 	}
