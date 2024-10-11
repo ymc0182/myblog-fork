@@ -1,3 +1,5 @@
 export function  formatDate(date: Date) {
-    return new Date(date).toLocaleString('zh-cn', {dateStyle:'long'});
+    return new Date(date).toLocaleString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+    });
 }
