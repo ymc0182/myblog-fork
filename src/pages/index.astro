@@ -12,7 +12,7 @@ const allPosts = await Astro.glob('./posts/*.*');
 		{allPosts.map((post) => 
 			<article>
 				<h1 class="tracking-wider leading-relaxed"><a href={post.url} >{post.frontmatter.title}</a></h1>
-				<date class="text-xs text-neutral-400 dark:text-neutral-600">{formatDate(post.frontmatter.date)}</date>
+				<date class="text-xs text-neutral-500">{formatDate(post.frontmatter.date)}</date>
 			</article>
 		)}
 
