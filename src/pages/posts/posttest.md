@@ -1,3 +1,15 @@
+---
+layout: "../../layouts/PostLayout.astro"
+title: '我的第一篇博客文章'
+date: 2022-07-01
+desc: '这是我 Astro 博客的第一篇文章。'
+author: 'Astro 学习者'
+cover:
+    url: 'https://docs.astro.build/assets/rose.webp'
+    alt: 'The Astro logo on a dark background with a pink glow.'
+tags: ["astro", "blogging", "learning in public"]
+---
+
 # 人工智能与日常生活的融合
 
 ## 摘要
