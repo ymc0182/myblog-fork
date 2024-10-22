@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro"
 import PostHeaderComponent from "./components/PostHeaderComponent.astro";
 import FooterComponent from "./components/FooterComponent.astro";
+import Comment from "./components/Comment.astro";
 import MarkdownLayout from "./MarkdownLayout.astro";
 import { formatDate } from "../utils/formatDate";
 
@@ -19,6 +20,9 @@ const { frontmatter } = Astro.props;
                 <slot />
             </article>
         </MarkdownLayout>
+        <div class="pt-8">
+            <Comment />
+        </div>
     </main>
     
     <FooterComponent />
