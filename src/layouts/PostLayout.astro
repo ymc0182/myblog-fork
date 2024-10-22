@@ -14,7 +14,7 @@ const { frontmatter } = Astro.props;
     <main class="container mx-auto p-8">
         <MarkdownLayout>
             <article>
-                {frontmatter.title && <h1 class="mb-0">{frontmatter.title}</h1>}
+                {frontmatter.title && <h1 class="mb-0 text-2xl">{frontmatter.title}</h1>}
                 {frontmatter.date && <p><time>{formatDate(frontmatter.date)}</time></p>}
                 <slot />
             </article>
