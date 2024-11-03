@@ -1,0 +1,37 @@
+---
+import { SITE } from "../consts";
+---
+
+<header id="header" class="sticky top-0  ">
+    <div class="container mx-auto px-8 py-2">
+        <div class="flex justify-between">
+            <h1><a href="/">{SITE.title}</a></h1>
+        </div>
+    </div>
+</header>
+
+<script>
+    const stickyHeaderClass = [
+        'border-b',
+        'border-neutral-200/70',
+        'backdrop-blur-lg',
+        'bg-white/70',
+        'dark:border-neutral-800/70',
+        'dark:bg-neutral-900/70',
+    ];
+    const unstickyHeaderClass = [
+        'border-transparent',
+    ];
+    let headerElement = document.getElementById('header');
+    document.addEventListener('DOMContentLoaded', function(){
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 16) {
+                headerElement.classList.add(...stickyHeaderClass);
+                headerElement.classList.remove(...unstickyHeaderClass);
+            } else {
+                headerElement.classList.add(...unstickyHeaderClass);
+                headerElement.classList.remove(...stickyHeaderClass);
+            }
+        });
+    });
+</script>

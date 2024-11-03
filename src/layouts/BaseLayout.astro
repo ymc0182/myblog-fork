@@ -1,0 +1,58 @@
+---
+import Header from "../components/Header.astro";
+import { SITE } from "../consts";
+import { ViewTransitions } from "astro:transitions";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type ="image/svg+xml" href="/favicon.svg" />
+        <!-- <link rel="icon" type="image/x-icon" href="https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309?s=400&amp;f=mp"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content = {Astro.generator} >
+        <title>{ title && title + " - " }{SITE.title}</title>
+        <meta name="description" content=>
+
+        <ViewTransitions  />
+    </head>
+    <body ontouchstart="ontouchstart" class="h-full w-full scroll-smooth text-neutral-800 dark:bg-neutral-900 dark:text-neutral-400"></html>
+        <Header></Header>
+        <slot />
+    </body>
+</html>
+
+<style>
+    @font-face {
+		font-family: 'zql';
+		src: url('../assets/fonts/zql.woff2') format('woff2'),
+			url('../assets/fonts/zql.woff') format('woff');
+		font-display: swap;
+	}
+	/* @font-face {
+		font-family: 'hm';
+		src: url('../assets/fonts/hm.woff2') format('woff2'),
+	} */
+
+	::-webkit-scrollbar{
+	}
+
+	body {
+		font-family: "zql" ,"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
+	}
+</style>
+
+<script>
+    function updateTheme() {
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	}
+	updateTheme();
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+</script>
