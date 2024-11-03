@@ -1,21 +1,12 @@
----
-import PageLayout from "../layouts/PageLayout.astro";
-import { formatDate } from "../utils/formatDate";
-
-const allPosts = await Astro.glob('./posts/*.*');
----
-
-<PageLayout>
-
-	<main class="container mx-auto p-8 space-y-6">
-
-		{allPosts.map((post) => 
-			<article>
-				<h1 class="tracking-wider leading-relaxed"><a href={post.url} >{post.frontmatter.title}</a></h1>
-				<date class="text-xs text-neutral-400 dark:text-neutral-600">{formatDate(post.frontmatter.date)}</date>
-			</article>
-		)}
-
-	</main>
-
-</PageLayout>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 class="text-3xl font-bold underline">
+        Hello world!
+        </h1>
+    </body>
+</html>
