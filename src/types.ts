@@ -1,6 +1,6 @@
 export type Site = {
     title: string;
-    logo: string;
+    avatar: string;
     keywords: string;
     description: string;
     num_posts_on_page: number;
