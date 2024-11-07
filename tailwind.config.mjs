@@ -6,7 +6,11 @@ export default {
 			sm: '480px',
 			lg: '800px',
 		  },
-		extend: {},
+		colors: {
+			'deep-teal': '#63938c',
+			'beige': '#ebe5d0',
+			'charcoal': '#2e303f',
+		},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),

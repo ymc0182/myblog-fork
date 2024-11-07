@@ -3,8 +3,8 @@ export type Site = {
     avatar: string;
     keywords: string;
     description: string;
-    num_posts_on_page: number;
-    num_posts_on_homepage: number;
+    num_blog_on_page: number;
+    num_blog_on_homepage: number;
 };
   
 export type Metadata = {
