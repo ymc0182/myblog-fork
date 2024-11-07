@@ -9,7 +9,6 @@ const blog = (await getCollection("blog"))
 .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 .slice(0, SITE.num_blog_on_homepage);
 
-
 ---
 
 <BaseLayout>
