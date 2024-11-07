@@ -22,7 +22,8 @@ img: [
 
 ## 第二天：卢浮宫博物馆
 
-![图片]('https://docs.astro.build/assets/rose.webp')
+![图片](https://docs.astro.build/assets/rose.webp)
+
 第二天，我参观了卢浮宫博物馆，那里收藏了许多世界著名的艺术品。
 
 ### 蒙娜丽莎的微笑
