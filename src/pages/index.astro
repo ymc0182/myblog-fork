@@ -1,13 +1,26 @@
 ---
+import { getCollection } from "astro:content"
 import BaseLayout from "../layouts/BaseLayout.astro"
+import { SITE } from "../consts";
+import { formatDate } from "../utils/formatDate";
+
+const blog = (await getCollection("blog"))
+.filter(post => !post.data.draft)
+.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+.slice(0, SITE.num_blog_on_homepage);
+
+
 ---
 
 <BaseLayout>
-<main class="container mx-auto p-8 h-[2000px]">
-    <section>
-        <article>
-            <a href="#" class="hover:text-blue-500">追风筝的人:读书笔记</a>
-        </article>
+<main class="container mx-auto px-8 py-16">
+    <section class="space-y-8">
+        {blog.map(post => (
+            <article class="flex flex-col">
+                <a href="#" class="hover:text-blue-500">{post.data.title}</a>
+                <time datetime={post.data.date} class="text-xs text-neutral-400 dark:text-neutral-600">{formatDate(post.data.date)}</time>
+            </article>
+        ))}
     </section>
 </main>
 </BaseLayout>

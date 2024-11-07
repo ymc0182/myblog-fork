@@ -1,9 +1,12 @@
 ---
 title: '我的旅行日记：探索巴黎'
 date: 2024-11-07
-img: 
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: '封面图片'
+img: [
+    [
+        url: 'https://docs.astro.build/assets/rose.webp',
+        alt: '封面图片'
+    ],
+]
 ---
 
 

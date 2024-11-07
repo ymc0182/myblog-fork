@@ -5,11 +5,13 @@ export default {
 		screens: {
 			sm: '480px',
 			lg: '800px',
-		  },
-		colors: {
-			'deep-teal': '#63938c',
-			'beige': '#ebe5d0',
-			'charcoal': '#2e303f',
+		},
+		extend: {
+			colors: {
+				'deep-teal': '#63938c',
+				'beige': '#ebe5d0',
+				'charcoal': '#2e303f',
+			},
 		},
 	},
 	plugins: [
