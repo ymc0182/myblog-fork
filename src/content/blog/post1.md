@@ -2,10 +2,18 @@
 title: '《追风筝的人》读书笔记'
 date: 2024-11-09
 img: [
-    [
+    {
         url: 'https://docs.astro.build/assets/rose.webp',
         alt: '封面图片'
-    ],
+    },
+    {
+        url: 'https://docs.astro.build/assets/rose.webp',
+        alt: '封面图片'
+    },
+    {
+        url: 'https://docs.astro.build/assets/rose.webp',
+        alt: '封面图片'
+    },
 ]
 
 draft: true

@@ -2,13 +2,20 @@
 title: '个人成长之路：自我提升的七个习惯'
 date: 2024-11-09
 img: [
-    [
+    {
         url: 'https://docs.astro.build/assets/rose.webp',
         alt: '封面图片'
-    ],
+    },
+    {
+        url: 'https://docs.astro.build/assets/rose.webp',
+        alt: '封面图片'
+    },
+    {
+        url: 'https://docs.astro.build/assets/rose.webp',
+        alt: '封面图片'
+    },
 ]
 
-draft: false
 ---
 
 在快节奏的现代生活中，个人成长和自我提升变得越来越重要。本文将探讨七个有助于个人发展的习惯，帮助你在职业和个人生活中取得成功。

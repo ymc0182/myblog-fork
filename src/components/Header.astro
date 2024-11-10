@@ -26,49 +26,57 @@ import { SITE } from "../consts";
 </header>
 
 <script>
-    const stickyHeaderClass = [
-        'border-b',
-        'border-neutral-200/70',
-        'backdrop-blur-lg',
-        'bg-white/70',
-        'dark:border-neutral-800/70',
-        'dark:bg-neutral-900/70',
-    ];
-    const unstickyHeaderClass = [
-        'border-transparent',
-    ];
-    let headerElement = document.getElementById('header');
-    let avatarElement = document.getElementById('avatar');
-    let backToTopBtnElement = document.getElementById('backToTopBtn');
-    document.addEventListener('DOMContentLoaded', function(){
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 16) {
-                headerElement.classList.add(...stickyHeaderClass);
-                headerElement.classList.remove(...unstickyHeaderClass);
+    function initHeader(){
+        let headerElement = document.getElementById('header');
+        let avatarElement = document.getElementById('avatar');
+        let backToTopBtnElement = document.getElementById('backToTopBtn');
+        backToTopBtnElement?.addEventListener('click', (event) => scrollToTop(event));
 
-                avatarElement.classList.add('hidden');
-                backToTopBtnElement.classList.add('flex');
-                backToTopBtnElement.classList.remove('hidden');
-            } else {
-                headerElement.classList.add(...unstickyHeaderClass);
-                headerElement.classList.remove(...stickyHeaderClass);
+        stickyHeader(headerElement, backToTopBtnElement, avatarElement);
 
-                backToTopBtnElement.classList.add('hidden');
-                backToTopBtnElement.classList.remove('flex');
-                avatarElement.classList.remove('hidden');
-            }
-        });
-    });
-
-    backToTopBtnElement.addEventListener('click', function(event) {
-		event.preventDefault();
-		window.scrollTo({
-			top:0,
-			behavior: 'smooth'
-		});
-	});
-
-    window.onload = function(){
-        document.getElementById('loadingIcon').style.display = "none";
+        document.getElementById('loadingIcon').style.display = 'none'
     }
+
+    function stickyHeader(headerElement, backToTopBtnElement, avatarElement){
+        const stickyHeaderClass = [
+            'border-b',
+            'border-neutral-200/70',
+            'backdrop-blur-lg',
+            'bg-white/70',
+            'dark:border-neutral-800/70',
+            'dark:bg-neutral-900/70',
+        ];
+        const unstickyHeaderClass = [
+            'border-transparent',
+        ];
+        window.addEventListener('scroll', function() {
+        if (window.scrollY > 16) {
+            headerElement.classList.add(...stickyHeaderClass);
+            headerElement.classList.remove(...unstickyHeaderClass);
+
+            avatarElement.classList.add('hidden');
+            backToTopBtnElement.classList.add('flex');
+            backToTopBtnElement.classList.remove('hidden');
+        } else {
+            headerElement.classList.add(...unstickyHeaderClass);
+            headerElement.classList.remove(...stickyHeaderClass);
+
+            backToTopBtnElement.classList.add('hidden');
+            backToTopBtnElement.classList.remove('flex');
+            avatarElement.classList.remove('hidden');
+        }
+    })
+    }
+
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => initHeader());
+    document.addEventListener('astro:after-swap', () => initHeader());
+    document.addEventListener('astro:before-preparation', () => document.getElementById('loadingIcon').style.display = 'block');
 </script>
