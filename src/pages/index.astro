@@ -12,7 +12,7 @@ const blog = (await getCollection("blog"))
 ---
 
 <PageLayout>
-<main class="container mx-auto px-8 py-16 h-[2000px]">
+<main class="container mx-auto px-8 py-16">
     <section class="space-y-8">
         {blog.map(post => (
             <BlogCard entry={ post } />
