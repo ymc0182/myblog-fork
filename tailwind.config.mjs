@@ -4,7 +4,7 @@ export default {
 	theme: {
 		screens: {
 			sm: '480px',
-			lg: '800px',
+			lg: '680px',
 		},
 		extend: {
 			typography: ({ theme }) => ({

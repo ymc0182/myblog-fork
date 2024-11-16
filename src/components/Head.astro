@@ -5,78 +5,80 @@ import { ViewTransitions } from "astro:transitions";
 const { title } = Astro.props;
 ---
 
-<meta charset="UTF-8">
-<!-- <link rel="icon" type ="image/svg+xml" href="/favicon.svg" /> -->
-<link rel="icon" type="image/x-icon" href="https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309?s=100&amp;f=mp">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content = {Astro.generator} >
-<title>{ title && title + " - " }{SITE.title}</title>
-<meta name="description" content=>
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="icon" type ="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" type="image/x-icon" href="https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309?s=100&amp;f=mp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content = {Astro.generator} >
+    <title>{ title && title + " - " }{SITE.title}</title>
+    <meta name="description" content=>
 
-<ViewTransitions  />
+    <ViewTransitions  />
 
-<script>
-    function initHeader(){
-        let headerElement = document.getElementById('header');
-        let avatarElement = document.getElementById('avatar');
-        let backToTopBtnElement = document.getElementById('backToTopBtn');
-        backToTopBtnElement?.addEventListener('click', (event) => scrollToTop(event));
+    <script>
+        function initHeader(){
+            let headerElement = document.getElementById('header');
+            let avatarElement = document.getElementById('avatar');
+            let backToTopBtnElement = document.getElementById('backToTopBtn');
+            backToTopBtnElement?.addEventListener('click', (event) => scrollToTop(event));
 
-        updateTheme();
-        stickyHeader(headerElement, backToTopBtnElement, avatarElement);
+            updateTheme();
+            stickyHeader(headerElement, backToTopBtnElement, avatarElement);
 
-        document.getElementById('loadingIcon').style.display = 'none'
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
-    }
-
-    function stickyHeader(headerElement, backToTopBtnElement, avatarElement){
-        const stickyHeaderClass = [
-            'border-b',
-            'border-neutral-200/70',
-            'backdrop-blur-lg',
-            'bg-white/70',
-            'dark:border-neutral-800/70',
-            'dark:bg-neutral-900/70',
-        ];
-        const unstickyHeaderClass = [
-            'border-transparent',
-        ];
-        window.addEventListener('scroll', function() {
-        if (window.scrollY > 16) {
-            headerElement.classList.add(...stickyHeaderClass);
-            headerElement.classList.remove(...unstickyHeaderClass);
-
-            avatarElement.classList.add('hidden');
-            backToTopBtnElement.classList.add('flex');
-            backToTopBtnElement.classList.remove('hidden');
-        } else {
-            headerElement.classList.add(...unstickyHeaderClass);
-            headerElement.classList.remove(...stickyHeaderClass);
-
-            backToTopBtnElement.classList.add('hidden');
-            backToTopBtnElement.classList.remove('flex');
-            avatarElement.classList.remove('hidden');
+            document.getElementById('loadingIcon').style.display = 'none'
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
         }
-    })
-    }
 
-    function scrollToTop(event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
+        function stickyHeader(headerElement, backToTopBtnElement, avatarElement){
+            const stickyHeaderClass = [
+                'border-b',
+                'border-neutral-200/70',
+                'backdrop-blur-lg',
+                'bg-white/70',
+                'dark:border-neutral-800/70',
+                'dark:bg-neutral-900/70',
+            ];
+            const unstickyHeaderClass = [
+                'border-transparent',
+            ];
+            window.addEventListener('scroll', function() {
+            if (window.scrollY > 16) {
+                headerElement.classList.add(...stickyHeaderClass);
+                headerElement.classList.remove(...unstickyHeaderClass);
 
-    function updateTheme() {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+                avatarElement.classList.add('hidden');
+                backToTopBtnElement.classList.add('flex');
+                backToTopBtnElement.classList.remove('hidden');
+            } else {
+                headerElement.classList.add(...unstickyHeaderClass);
+                headerElement.classList.remove(...stickyHeaderClass);
+
+                backToTopBtnElement.classList.add('hidden');
+                backToTopBtnElement.classList.remove('flex');
+                avatarElement.classList.remove('hidden');
+            }
+        })
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', () => initHeader());
-    document.addEventListener('astro:after-swap', () => initHeader());
-    document.addEventListener('astro:before-preparation', () => document.getElementById('loadingIcon').style.display = 'block');
-</script>
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function updateTheme() {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => initHeader());
+        document.addEventListener('astro:after-swap', () => initHeader());
+        document.addEventListener('astro:before-preparation', () => document.getElementById('loadingIcon').style.display = 'block');
+    </script>
+</head>
