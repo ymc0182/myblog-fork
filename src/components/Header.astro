@@ -2,7 +2,7 @@
 import { SITE } from "../consts";
 ---
 
-<header id="header" class="sticky top-0  ">
+<header id="header" class="sticky top-0 z-[99999]">
     <div class="container mx-auto px-8 py-2">
         <div class="flex justify-between items-center">
             <h1 class="flex items-center">
@@ -25,3 +25,58 @@ import { SITE } from "../consts";
     </div>
 </header>
 
+<script>
+    function initHeader(){
+        let headerElement = document.getElementById('header');
+        let avatarElement = document.getElementById('avatar');
+        let backToTopBtnElement = document.getElementById('backToTopBtn');
+        backToTopBtnElement?.addEventListener('click', (event) => scrollToTop(event));
+
+        stickyHeader(headerElement, backToTopBtnElement, avatarElement);
+
+        document.getElementById('loadingIcon').style.display = 'none'
+    }
+
+    function stickyHeader(headerElement, backToTopBtnElement, avatarElement){
+        const stickyHeaderClass = [
+            'border-b',
+            'border-neutral-200/70',
+            'backdrop-blur-lg',
+            'bg-white/70',
+            'dark:border-neutral-800/70',
+            'dark:bg-neutral-900/70',
+        ];
+        const unstickyHeaderClass = [
+            'border-transparent',
+        ];
+        window.addEventListener('scroll', function() {
+        if (window.scrollY > 16) {
+            headerElement.classList.add(...stickyHeaderClass);
+            headerElement.classList.remove(...unstickyHeaderClass);
+
+            avatarElement.classList.add('hidden');
+            backToTopBtnElement.classList.add('flex');
+            backToTopBtnElement.classList.remove('hidden');
+        } else {
+            headerElement.classList.add(...unstickyHeaderClass);
+            headerElement.classList.remove(...stickyHeaderClass);
+
+            backToTopBtnElement.classList.add('hidden');
+            backToTopBtnElement.classList.remove('flex');
+            avatarElement.classList.remove('hidden');
+        }
+    })
+    }
+
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => initHeader());
+    document.addEventListener('astro:after-swap', () => initHeader());
+    document.addEventListener('astro:before-preparation', () => document.getElementById('loadingIcon').style.display = 'block');
+</script>
