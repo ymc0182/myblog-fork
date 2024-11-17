@@ -1,5 +1,5 @@
 ---
-title: "Projects Collection"
+title: "项目集合"
 description: "How to add projects to your portfolio."
 date: "Mar 20 2024"
 ---
@@ -18,8 +18,8 @@ Working with the `projects` collection:
 
 In the above example, two static pages will be generated, based on the existence of a classic markdown `.md` file or a jsx compatible markdown `.mdx` file. The folder name represents the slug:
 
-- `https://example.com/projects/project-1`
-- `https://example.com/projects/project-2`
+- https://example.com/projects/project-1
+- https://example.com/projects/project-2
 
 
 All content must be preceded by required metadata in the markdown file in `yaml` format, and be enclosed by triple dashes. --- ---
