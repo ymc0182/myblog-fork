@@ -1,6 +1,7 @@
 ---
 title: '个人成长之路：自我提升的七个习惯'
 date: 2024-11-09
+upDate: 2024-11-18 12:19
 img: [
     {
         url: 'https://docs.astro.build/assets/rose.webp',
