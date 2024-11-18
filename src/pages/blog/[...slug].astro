@@ -23,10 +23,10 @@ const { Content } = await post.render();
 
 <PageLayout title = {post.data.title}>
 
-    <article class="prose prose-post dark:prose-invert mb-16">
+    <article class="prose max-w-none prose-post dark:prose-invert mb-16">
         <header class="mb-8">
             <h1 class="text-2xl mb-2" transition:name={post.data.title}>{post.data.title}</h1>
-            <time datetime={post.data.date.toString()} class="text-sm text-neutral-400 dark:text-neutral-600">{formatDate(post.data.date, true)}</time>
+            <time datetime={post.data.date.toString()} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(post.data.date, true)}</time>
         </header>
 
         <section class="mb-16" role="article">
@@ -35,8 +35,11 @@ const { Content } = await post.render();
 
         <footer>
             <div class="flex items-center">
-                <div class="text-xs text-neutral-300 rounded-full border border-neutral-200 px-2 shrink-0 dark:text-neutral-600 dark:border-neutral-800">End of reading</div>
-                <div class="border-t border-dashed border-neutral-200 w-full dark:border-neutral-800"></div>
+                <div class="text-xs text-neutral-500 rounded-full border border-neutral-400 px-2 shrink-0 dark:text-neutral-600 dark:border-neutral-600">End of reading</div>
+                <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
+            </div>
+            <div class="text-sm text-neutral-500 dark:text-neutral-600">
+                <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。若本文未声明禁止转载，你可以在标明署名和来源的前提下转载这篇文章。</p>
             </div>
         </footer>
     </article>

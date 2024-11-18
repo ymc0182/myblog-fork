@@ -50,22 +50,22 @@ import { SITE } from "../consts";
             'border-transparent',
         ];
         window.addEventListener('scroll', function() {
-        if (window.scrollY > 16) {
-            headerElement.classList.add(...stickyHeaderClass);
-            headerElement.classList.remove(...unstickyHeaderClass);
+            if (window.scrollY > 16) {
+                headerElement.classList.add(...stickyHeaderClass);
+                headerElement.classList.remove(...unstickyHeaderClass);
 
-            avatarElement.classList.add('hidden');
-            backToTopBtnElement.classList.add('flex');
-            backToTopBtnElement.classList.remove('hidden');
-        } else {
-            headerElement.classList.add(...unstickyHeaderClass);
-            headerElement.classList.remove(...stickyHeaderClass);
+                avatarElement.classList.add('hidden');
+                backToTopBtnElement.classList.add('flex');
+                backToTopBtnElement.classList.remove('hidden');
+            } else {
+                headerElement.classList.add(...unstickyHeaderClass);
+                headerElement.classList.remove(...stickyHeaderClass);
 
-            backToTopBtnElement.classList.add('hidden');
-            backToTopBtnElement.classList.remove('flex');
-            avatarElement.classList.remove('hidden');
-        }
-    })
+                backToTopBtnElement.classList.add('hidden');
+                backToTopBtnElement.classList.remove('flex');
+                avatarElement.classList.remove('hidden');
+            }
+        }, { passive: true })
     }
 
     function scrollToTop(event) {
