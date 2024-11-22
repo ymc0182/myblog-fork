@@ -1,0 +1,20 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import PageLayout from "../layouts/PageLayout.astro";
+import FriendCard from "../components/FriendCard.astro";
+
+const friends = await getCollection("friends")
+
+---
+
+<PageLayout title="友链">
+    <h1 class="text-2xl">友链</h1>
+    <p>这里展示了各路朋友们</p>
+
+    <section class="pt-8 grid gap-8 grid-cols-2">
+        {friends[0].data.map(friend => (
+            <FriendCard entry={friend} />
+        ))}
+    </section>
+</PageLayout>
+

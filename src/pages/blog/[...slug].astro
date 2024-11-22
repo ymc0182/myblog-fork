@@ -3,7 +3,7 @@ import PageLayout from "../../layouts/PageLayout.astro"
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { formatDate } from "../../utils/formatDate";
-import Comments from "../../components/Comments.astro";
+import Comment from "../../components/Comment";
 
 export async function  getStaticPaths (){
     const posts = (await getCollection('blog'))
@@ -43,5 +43,5 @@ const { Content } = await post.render();
         </footer>
     </article>
 
-    <Comments />
+    <Comment client:load />
 </PageLayout>

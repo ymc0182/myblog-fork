@@ -14,6 +14,23 @@ const blogCollection = defineCollection({
     }),
 });
 
+const friendsColleection = defineCollection({
+    type: 'data',
+    schema: ({ image }) => z.array(
+        z.object({
+            name: z.string(),
+            desc: z.string(),
+            avatar: z.string(),
+            social: z.object({
+                blog: z.string().optional(),
+                twitter: z.string().optional(),
+                github: z.string().optional(),
+            }),
+        }),
+    ),
+});
+
 export const collections = {
-    'blog': blogCollection,
+    blog: blogCollection,
+    friends: friendsColleection,
 };
