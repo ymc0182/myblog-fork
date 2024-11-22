@@ -1,20 +1,20 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-type Props = {
-    entry: CollectionEntry<'friends'>;
-}
+// type Props = {
+//     entry: CollectionEntry<'friends'>;
+// }
 
 const { entry } = Astro.props;
 
 ---
 
 <div class="w-full space-y-4">
-    <div class="flex items-center">
+    <div class="flex">
         <img src={entry.avatar} class="w-10 h-10 rounded-lg" alt={entry.name}>
         <div class="ml-2">
-            <h4>{entry.name}</h4>
-            <p class="text-sm text-neutral-600">{entry.desc}</p>
+            <h4 class="line-clamp-1 overflow-ellipsis">{entry.name}</h4>
+            <p class="text-sm text-neutral-600 line-clamp-2 overflow-ellipsis">{entry.desc}</p>
         </div>
     </div>
     <div class="flex flex-wrap gap-2.5 items-center">

@@ -33,7 +33,6 @@
         "desc": "网站描述",
         "avatar": "https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp",
         "social": {
-            "blog": "https://jb18.cm",
             "twitter": "ymc0182",
             "github": "ymc0182"
         }
@@ -53,9 +52,15 @@
         "desc": "网站描述",
         "avatar": "https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp",
         "social": {
-            "blog": "https://jb18.cm",
-            "twitter": "ymc0182",
             "github": "ymc0182"
+        }
+    },
+    {
+        "name": "袁某人",
+        "desc": "网站描述",
+        "avatar": "https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp",
+        "social": {
+            "twitter": "ymc0182"
         }
     },
     {
@@ -69,18 +74,8 @@
         }
     },
     {
-        "name": "袁某人",
-        "desc": "网站描述",
-        "avatar": "https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp",
-        "social": {
-            "blog": "https://jb18.cm",
-            "twitter": "ymc0182",
-            "github": "ymc0182"
-        }
-    },
-    {
-        "name": "袁某人",
-        "desc": "网站描述",
+        "name": "袁某人袁某人袁某人袁某人袁某人袁某人袁某人袁某人袁某人",
+        "desc": "网站描述网站描述网站描述网站描述网站描述网站描述网站描述网站描述网站描述",
         "avatar": "https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp",
         "social": {
             "blog": "https://jb18.cm",
