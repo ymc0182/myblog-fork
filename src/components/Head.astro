@@ -5,31 +5,50 @@ import { ViewTransitions } from "astro:transitions";
 const { title } = Astro.props;
 ---
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href={SITE.avatar}>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content = {Astro.generator} >
-    <title>{ title && title + " - " }{SITE.title}</title>
-    <meta name="description" content={SITE.description}>
 
-    <ViewTransitions  />
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href={SITE.avatar}>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content = {Astro.generator} >
+<title>{ title && title + " - " }{SITE.title}</title>
+<meta name="description" content={SITE.description}>
+<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Regular/result.css' /> 
 
-    <script>
-        function init(){
-            updateTheme();
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+<ViewTransitions  />
+
+<script>
+    function init(){
+        updateTheme();
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+    }
+
+    function updateTheme() {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
+    }
 
-        function updateTheme() {
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
+    document.addEventListener('DOMContentLoaded', () => init());
+    document.addEventListener('astro:after-swap', () => init());
+    document.body.addEventListener('touchstart', () => {}, { passive: true });
+</script>
 
-        document.addEventListener('DOMContentLoaded', () => init());
-        document.addEventListener('astro:after-swap', () => init());
-    </script>
-</head>
+<style>
+    body {
+		font-family: 'Yozai',"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
+        font-weight: 400;
+	}
+	/* @import("https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css");
+    @font-face {
+		font-family: 'zql';
+		src: url('../assets/fonts/zql.woff2') format('woff2'),
+			url('../assets/fonts/zql.woff') format('woff');
+		font-display: swap;
+	} */
+	/* @font-face {
+		font-family: 'hm';
+		src: url('../assets/fonts/hm.woff2') format('woff2'),
+	} */
+</style>
