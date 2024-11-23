@@ -1,13 +1,31 @@
 ---
-import BaseLayout from "./BaseLayout.astro"
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Comment from "../components/Comment";
+import { formatDate } from "../utils/formatDate";
+import PageLayout from "./PageLayout.astro";
 
-const { title } = Astro.props;
+const { postData } = Astro.props;
+const { Content } = await postData.render();
 ---
 
-<BaseLayout title = {title}>
-    <Header />
-        <slot />
-    <Footer />
-</BaseLayout>
+<PageLayout title = {postData.data.title}>
+    <article class="prose max-w-none prose-post dark:prose-invert">
+        <header class="mb-8">
+            <h1 class="text-2xl mb-2" transition:name={postData.data.title}>{postData.data.title}</h1>
+            <time datetime={postData.data.date.toString()} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, true)}</time>
+        </header>
+
+        <Content />
+
+        <footer class="my-16">
+            <div class="flex items-center">
+                <div class="text-xs text-neutral-500 rounded-full border border-neutral-400 px-2 shrink-0 dark:text-neutral-600 dark:border-neutral-600">End of reading</div>
+                <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
+            </div>
+            <div class="text-sm text-justify text-neutral-500 dark:text-neutral-600">
+                <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。若本文未声明禁止转载，你可以在标明署名和来源的前提下转载这篇文章。</p>
+                {postData.data.upDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.upDate.toString()}>{formatDate(postData.data.upDate, true)}</time></p>}
+            </div>
+        </footer>
+    </article>
+    <Comment client:load />
+</PageLayout>
