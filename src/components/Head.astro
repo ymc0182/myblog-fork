@@ -12,7 +12,6 @@ const { title } = Astro.props;
 <meta name="generator" content = {Astro.generator} >
 <title>{ title && title + " - " }{SITE.title}</title>
 <meta name="description" content={SITE.description}>
-<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css' /> 
 
 <ViewTransitions  />
 
@@ -36,19 +35,18 @@ const { title } = Astro.props;
 </script>
 
 <style>
-    body {
-		font-family: 'KingHwa_OldSong',"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
-        font-weight: 400;
-	}
-	/* @import("https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css");
     @font-face {
 		font-family: 'zql';
 		src: url('../assets/fonts/zql.woff2') format('woff2'),
 			url('../assets/fonts/zql.woff') format('woff');
 		font-display: swap;
-	} */
+	}
 	/* @font-face {
 		font-family: 'hm';
 		src: url('../assets/fonts/hm.woff2') format('woff2'),
 	} */
+    body {
+		font-family: 'zql',"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
+        font-weight: 400;
+	}
 </style>
