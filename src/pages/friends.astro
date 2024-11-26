@@ -10,7 +10,7 @@ const friends = await getCollection("friends")
     <h1 class="text-2xl">友链</h1>
     <p>这里展示了各路朋友们</p>
 
-    <section class="pt-8 grid gap-8 grid-cols-2">
+    <section class="pt-8 grid gap-8 grid-cols-1 md:grid-cols-2">
         {friends[0].data.map(friend => (
             <FriendCard entry={friend} />
         ))}
