@@ -9,12 +9,7 @@ const friends = await getCollection("friends")
 <PageLayout title="友链">
     <h1 class="text-2xl">友链</h1>
     <p>这里展示了各路朋友们</p>
-
-<<<<<<< HEAD
     <section class="pt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
-=======
-    <section class="pt-8 grid gap-8 grid-cols-1 md:grid-cols-2">
->>>>>>> 296cf460850f1ae8550d622d353de89f8fbfaa21
         {friends[0].data.map(friend => (
             <FriendCard entry={friend} />
         ))}
