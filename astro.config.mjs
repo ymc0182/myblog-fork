@@ -10,5 +10,6 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), react()],
   devToolbar: {
     enabled: false
-  }
+  },
+  site: 'https://demo.jb18.cm',
 });
