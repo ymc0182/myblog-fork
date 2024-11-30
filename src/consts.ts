@@ -1,6 +1,5 @@
 import type { Site, NavLink } from './types';
 
-//网站信息
 export const SITE: Site = {
     title: '袁某博客',
     avatar: 'https://cravatar.com/avatar/5FBB13B635295D1226A17B782951C309.webp?f=mp',
@@ -10,10 +9,8 @@ export const SITE: Site = {
     num_blog_on_homepage: 5,
 };
 
-//导航
 export const NavLinks: NavLink = [
-    { name: '进行时', url: '/now' },
     { name: '留言', url: '/guestbook' },
-    { name: '友链', url: '/links' },
+    { name: '友链', url: '/friends' },
     { name: '关于', url: '/about' },
 ];

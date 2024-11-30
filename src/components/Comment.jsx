@@ -13,7 +13,7 @@ export default function MyApp() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="preferred_color_scheme"
+      theme="https://res.jb18.cm/css/giscus_theme.css"
       lang="zh-CN"
       loading="lazy"
     />
