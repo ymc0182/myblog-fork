@@ -6,7 +6,7 @@ export const SITE: Site = {
     keywords: '袁某博客,袁某人博客',
     description: '这是袁某人的 Astro 博客，主要分享日常、学习日志还有一些作品和介绍。',
     num_blog_on_page: 10,
-    num_blog_on_homepage: 5,
+    num_blog_on_homepage: 520,
 };
 
 export const NavLinks: NavLink = [

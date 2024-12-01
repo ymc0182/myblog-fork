@@ -198,3 +198,16 @@ main .gsc-loading-image {
         background-image: url(https://github.githubassets.com/images/mona-loading-dark.gif)
     }
 }
+
+@font-face {
+    font-family: 'zql';
+    src: url('https://res.jb18.cm/fonts/zql.woff2') format('woff2'),
+        url('https://res.jb18.cm/fonts/zql.woff') format('woff');
+    font-display: swap;
+}
+
+body {
+    font-family: 'zql',"Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif; 
+    font-weight: 400;
+}
+

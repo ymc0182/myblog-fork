@@ -1,0 +1,40 @@
+<nav id="PostCatalog" class="hidden sticky top-12 mb-6 px-2.5 rounded-lg bg-neutral-100/70 backdrop-blur-xl z-[99998] dark:bg-neutral-800/70">
+    <ul id="PostCatalogList" class="text-sm break-all max-h-64 overflow-hidden overflow-y-scroll list-disc list-outside space-y-2 ps-5 py-2.5 marker:text-neutral-400 hover:*:text-blue-500">
+        
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener('astro:page-load', ()=>{
+        const PostContentElement = document.getElementById('PostContent');
+        if(PostContentElement){
+            const ContentTitles = PostContentElement.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            const TitleLists : {id:string, name:string}[] = [];
+
+            ContentTitles.forEach((ContentTitle) => {
+                if(ContentTitle.id){
+                    TitleLists.push({
+                        id: ContentTitle.id,
+                        name: ContentTitle.textContent
+                    });
+                }
+            });
+
+            const PostCatalogListElement = document.getElementById('PostCatalogList');
+            PostCatalogListElement.innerHTML = '';
+            if(TitleLists.length !== 0){
+                TitleLists.forEach((item) => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = '#'+item.id;
+                    link.textContent = item.name;
+                    listItem.appendChild(link);
+                    PostCatalogListElement.appendChild(listItem);
+                })
+            }else{
+                PostCatalogListElement.innerHTML="没有目录"
+            }
+            
+        }
+    });
+</script>
