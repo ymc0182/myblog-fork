@@ -15,7 +15,6 @@ export default function MyApp() {
       inputPosition="top"
       theme="https://res.jb18.cm/css/giscus_theme.css"
       lang="zh-CN"
-      loading="lazy"
     />
   );
 }

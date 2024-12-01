@@ -1,25 +1,29 @@
 ---
 import { SITE } from "../consts";
+import HeaderAvatar from "./HeaderAvatar.astro";
+import HeaderButtonBack from "./HeaderButtonBack.astro";
+import HeaderButtonBackToTop from "./HeaderButtonBackToTop.astro";
+import HeaderButtonCatalog from "./HeaderButtonCatalog.astro";
+
+const { pageName } = Astro.props;
 ---
 
-<header id="header" class="sticky top-0 z-[99999]">
-    <div class="container mx-auto px-8 py-2">
+<header id="header" class="sticky top-0 z-[99997]">
+    <div class="container mx-auto px-8 py-2.5">
         <div class="flex justify-between items-center">
             <h1 class="flex items-center">
                 <a href="/">{SITE.title}</a>
-                <span id="loadingIcon" class="ml-1.5 p-1 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-600" onclick=alert('部分资源正在加载...'); role="button">
+                <span id="loadingIcon" class="ml-1.5 p-1 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 animate-spin">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                     </svg>
                 </span>
             </h1>
-            <div class="h-6 w-6 rounded-lg overflow-hidden">
-                <img id="avatar" class="w-full h-full aspect-square" loading="lazy" alt="avatar" src={SITE.avatar}>
-                <button id="backToTopBtn" class="hidden items-center justify-center w-full h-full rounded-lg bg-neutral-200/70 transition active:scale-95 dark:bg-neutral-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
-                    </svg>
-                </button>
+            <div class="flex items-center gap-2">
+                <HeaderButtonBackToTop />
+                {pageName == 'post' && <HeaderButtonCatalog />}
+                {pageName !== 'index' && <HeaderButtonBack />}
+                {pageName == 'index' && <HeaderAvatar avatar={SITE.avatar} />}
             </div>
         </div>
     </div>
@@ -29,13 +33,18 @@ import { SITE } from "../consts";
     function initHeader(){
         let headerElement = document.getElementById('header');
         let avatarElement = document.getElementById('avatar');
-        let backToTopBtnElement = document.getElementById('backToTopBtn');
-        backToTopBtnElement?.addEventListener('click', (event) => scrollToTop(event));
+        let HeaderButtonBackToTopElement = document.getElementById('HeaderButtonBackToTop');
+        let HeaderButtonBackElement = document.getElementById('HeaderButtonBack');
+        let HeaderButtonCatalogElement = document.getElementById('HeaderButtonCatalog');
 
-        stickyHeader(headerElement, backToTopBtnElement, avatarElement);
+        HeaderButtonBackToTopElement?.addEventListener('click', (event) => scrollToTop(event));
+        HeaderButtonBackElement?.addEventListener('click', () => window.history.back());
+        HeaderButtonCatalogElement?.addEventListener('click', (event) => postCatalog(event));
+
+        stickyHeader(headerElement, HeaderButtonBackToTopElement, avatarElement);
     }
 
-    function stickyHeader(headerElement, backToTopBtnElement, avatarElement){
+    function stickyHeader(headerElement, HeaderButtonBackToTopElement, avatarElement){
         const stickyHeaderClass = [
             'border-b',
             'border-neutral-200/70',
@@ -52,16 +61,14 @@ import { SITE } from "../consts";
                 headerElement.classList.add(...stickyHeaderClass);
                 headerElement.classList.remove(...unstickyHeaderClass);
 
-                avatarElement.classList.add('hidden');
-                backToTopBtnElement.classList.add('flex');
-                backToTopBtnElement.classList.remove('hidden');
+                HeaderButtonBackToTopElement.classList.add('flex');
+                HeaderButtonBackToTopElement.classList.remove('hidden');
             } else {
                 headerElement.classList.add(...unstickyHeaderClass);
                 headerElement.classList.remove(...stickyHeaderClass);
 
-                backToTopBtnElement.classList.add('hidden');
-                backToTopBtnElement.classList.remove('flex');
-                avatarElement.classList.remove('hidden');
+                HeaderButtonBackToTopElement.classList.add('hidden');
+                HeaderButtonBackToTopElement.classList.remove('flex');
             }
         }, { passive: true })
     }
@@ -73,6 +80,17 @@ import { SITE } from "../consts";
             behavior: "smooth"
         });
     }
+
+    function postCatalog(event){
+        let PostCatalogElement = document.getElementById('PostCatalog');
+        if(PostCatalogElement.classList.contains('hidden')){
+            PostCatalogElement.classList.remove('hidden');
+        }else{
+            PostCatalogElement.classList.add('hidden');
+        }
+    }
+
+    
 
     document.addEventListener('DOMContentLoaded', () => initHeader());
     document.addEventListener('astro:after-swap', () => initHeader());

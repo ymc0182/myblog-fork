@@ -2,14 +2,27 @@
 import BaseLayout from "./BaseLayout.astro"
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
+import BgGridPattern from "../components/BgGridPattern.astro";
 
-const { title } = Astro.props;
+type Props = {
+    pageName?: string,
+    title?: string,
+    description?: string
+}
+
+const { pageName, title, description } = Astro.props;
 ---
 
-<BaseLayout title = {title}>
-    <Header />
+<BaseLayout title = {title} description = {description}>
+
+    <BgGridPattern />
+
+    <Header pageName = {pageName} />
+
     <main class="container mx-auto px-8 py-16">
         <slot />
     </main>
+
     <Footer />
+    
 </BaseLayout>
