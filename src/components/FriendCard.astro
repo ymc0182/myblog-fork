@@ -11,7 +11,7 @@ const { entry } = Astro.props;
 
 <div class="w-full space-y-4">
     <div class="flex">
-        <img src={entry.avatar} class="w-10 h-10 rounded-lg" alt={entry.name}>
+        <img src={entry.avatar} class="w-10 h-10 rounded-lg" alt={entry.name} loading="lazy">
         <div class="ml-2">
             <h4 class="line-clamp-1 overflow-ellipsis">{entry.name}</h4>
             <p class="text-sm text-neutral-600 line-clamp-2 overflow-ellipsis">{entry.desc}</p>
