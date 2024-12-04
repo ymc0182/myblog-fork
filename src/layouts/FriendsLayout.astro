@@ -1,14 +1,19 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
 import FriendCard from "../components/FriendCard.astro";
+import Details from "../components/Details.astro";
 
 const friends = await getCollection("friends")
+
+const { frontmatter } = Astro.props
 ---
 
-<PageLayout title="友链">
-    <h1 class="text-2xl">友链</h1>
-    <p>这里展示了各路朋友们</p>
+<PageLayout title = {frontmatter.title} description = {frontmatter.description}>
+    <Details title = {frontmatter.title}>
+        <slot />
+    </Details>
+    
     <section class="pt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
         {friends[0].data.map(friend => (
             <FriendCard entry={friend} />

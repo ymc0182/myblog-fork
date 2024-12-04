@@ -1,18 +1,18 @@
 export type Site = {
-    title: string;
-    avatar: string;
-    keywords: string;
-    description: string;
-    num_blog_on_page: number;
-    num_blog_on_homepage: number;
+    TITLE: string;
+    AVATAR: string;
+    KEYWORDS: string;
+    DESCRIPTION: string;
+    NUM_BLOG_ON_PAGE: number;
+    NUM_BLOG_ON_HOMEPAGE: number;
 };
   
 export type Metadata = {
-    title: string;
-    description: string;
+    TITLE: string;
+    DESCRIPTION: string;
 };
 
-export type NavLink = {
-    name: string;
-    url: string;
+export type NavLinks = {
+    NAME: string;
+    HREF: string;
 }[];

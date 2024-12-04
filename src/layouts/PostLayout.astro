@@ -16,6 +16,15 @@ const { Content } = await postData.render();
             <time datetime={postData.data.date.toString()} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, true)}</time>
         </header>
 
+        <nav class="sticky top-12 bg-neutral-100/70 rounded-lg px-2.5 py-1 dark:bg-neutral-800/70 backdrop-blur-xl">
+            <details>
+                <summary class="cursor-pointer">目录</summary>
+                <ul id="PostCatalog" class="flex flex-col  text-sm">
+                    目录加载中...
+                </ul>
+            </details>
+        </nav>
+
         <div id="PostContent">
             <Content />
         </div>
@@ -35,3 +44,27 @@ const { Content } = await postData.render();
     <Comment client:load/>
 
 </PageLayout>
+
+<script is:inline>
+    document.addEventListener('astro:page-load', function(){
+        const postContent =document.getElementById('PostContent');
+        const postCatalog =document.getElementById('PostCatalog');
+
+        const headers= postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+        if(headers.length > 0){
+            postCatalog.innerHTML = '';
+            headers.forEach(function(header){
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#'+header.id;
+                link.textContent = header.textContent;
+                listItem.appendChild(link);
+                postCatalog.appendChild(listItem);
+            });
+        }else{
+            postCatalog.innerHTML = '没有目录';
+        }
+       
+    });
+</script>

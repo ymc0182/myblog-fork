@@ -2,15 +2,19 @@
 import { SITE } from "../consts";
 import { ViewTransitions } from "astro:transitions";
 
-const { title } = Astro.props;
----
+type Props = {
+  title: string;
+  description: string;
+};
 
+const { title, description } = Astro.props;
+---
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href={SITE.avatar}>
-<link rel="alternate" type="application/rss+xml" title={SITE.title} href={new URL("rss.xml", Astro.site)} />
+<link rel="icon" type="image/x-icon" href={SITE.AVATAR}>
+<link rel="alternate" type="application/rss+xml" title={SITE.TITLE} href={new URL("rss.xml", Astro.site)} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{ title && title + " - " }{SITE.title}</title>
-<meta name="description" content={SITE.description}>
+<title>{ title && title + " - " }{SITE.TITLE}</title>
+<meta name="description" content  = { description ? description : SITE.DESCRIPTION } />
 
 <ViewTransitions  />
 
