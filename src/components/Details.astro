@@ -1,10 +1,10 @@
 ---
 import ArticleLayout from "../layouts/ArticleLayout.astro";
 
-const { title } = Astro.props;
+const { title, ...res } = Astro.props;
 ---
 
-<details class="p-2.5 space-y-6 bg-neutral-100/70 rounded-lg px-2.5 py-1 dark:bg-neutral-800/70 backdrop-blur-xl">
+<details class="space-y-6 bg-neutral-100/70 rounded-lg px-5 py-2.5 dark:bg-neutral-800/70 backdrop-blur-xl" {...res}>
     <summary class="cursor-pointer">{title}</summary>
     <ArticleLayout>
         <slot />

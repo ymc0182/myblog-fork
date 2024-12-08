@@ -1,0 +1,17 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Comment from "../components/Comment";
+import Details from "../components/Details.astro";
+
+const { frontmatter } = Astro.props
+---
+
+<PageLayout title = {frontmatter.title} description = {frontmatter.description}>
+    <Details title = {frontmatter.title} open>
+        <slot />
+    </Details>
+
+    <section class="pt-8">
+        <Comment client:load/>
+    </section>
+</PageLayout>

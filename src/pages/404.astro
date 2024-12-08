@@ -3,12 +3,26 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 ---
 
 <BaseLayout title = "找不到内容😱">
-    <main class="container mx-auto px-8 py-16">
+    <!-- <main class="container mx-auto px-8 py-16">
         <h1 class="font-bold text-lg mb-2">找不到页面~</h1>
         <p class="mb-8">你似乎访问了一个错误的链接，或者内容已被删除。</p>
         <div class="flex items-center gap-4 text-sm *:underline *:underline-offset-4 *:decoration-dashed">
             <button onclick="window.history.back()">上一页</button>
             <button onclick="window.location.href='/'">回到首页</button>
+        </div>
+    </main> -->
+
+    <main class="container mx-auto h-screen px-8 flex items-center">
+        <h1 class="sr-only">404</h1>
+        <div class="space-y-6 text-lg">
+            <p class="text-4xl font-bold">Oi</p>
+            <p>会不会啊？</p>
+            <p>你到底会不会啊 o.O</p>
+            <p>都 404 了</p>
+            <div class="text-sm space-x-4 *:underline *:underline-offset-4 *:decoration-dashed">
+                <a href="javascript:history.back()">上一页</a>
+                <a href="/">回到首页</a>
+            </div>
         </div>
     </main>
 </BaseLayout>
