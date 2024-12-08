@@ -7,19 +7,21 @@ title: "Colophon"
 
 同步储存在 Github，由 Cloudflare Page 自动打包部署。
 
-#### 设计与开发
+### 设计与开发
 
 截至 24/11/24 这个网站已经编写半年之久，一半时间都呆在文件夹吃灰，期间模仿了众多网站创建了多个项目，最后全部推到重来按照自己的想法重新构建，基本都是参照 Astro 官方文档亲手敲出每行代码。
 
-#### 评论
+### 资源
 
-Giscus 是一个用 GitHub Discussions 实现评论的系统，你必须登录 Github 才能评论。
+- **Giscus**
 
-#### 字体
+  Giscus 是一个用 GitHub Discussions 实现评论的系统，你必须登录 Github 才能评论。
 
-...
+- **Heroicons**
 
-#### 灵感
+  精美的手工制作的 SVG 图标，由 Tailwind CSS 的制作者提供。
+
+### 灵感
 
 - [Namchee](https://www.namchee.dev)
 - [Dul](https://www.dzrgo.com)
