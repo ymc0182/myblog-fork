@@ -11,7 +11,7 @@ const { Content } = await postData.render();
 <PageLayout pageName = "post" title = {postData.data.title}>
 
     <AtricleLayout>
-        <header class="mb-4">
+        <header class="mb-8">
             <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
             <time datetime={postData.data.date.toString().slice(0,10)} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, 'zh')}</time>
         
