@@ -1,6 +1,6 @@
 ---
 import { SITE } from "../consts";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 type Props = {
   title: string;
@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
 <title>{ title && title + " - " }{SITE.TITLE}</title>
 <meta name="description" content  = { description ? description : SITE.DESCRIPTION } />
 
-<ViewTransitions  />
+<ClientRouter />
 
 <script>
     function init(){
