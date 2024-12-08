@@ -12,5 +12,5 @@ const { entry } = Astro.props;
 
 <article class="flex flex-col">
     <h3><a href={`/${entry.collection}/${entry.slug}`} class="hover:text-blue-500" transition:name={entry.slug}>{entry.data.title}</a></h3>
-    <time datetime={entry.data.date.toString().slice(0,10)} class="text-xs text-neutral-500 dark:text-neutral-600">{formatDate(entry.data.date)}</time>
+    <time datetime={formatDate(entry.data.date,  "datetime")} class="text-xs text-neutral-500 dark:text-neutral-600">{formatDate(entry.data.date)}</time>
 </article>
