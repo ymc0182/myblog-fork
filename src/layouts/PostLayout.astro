@@ -11,60 +11,27 @@ const { Content } = await postData.render();
 <PageLayout pageName = "post" title = {postData.data.title}>
 
     <AtricleLayout>
-        <header class="mb-8">
-            <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
+        <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
+        <section class="mb-8">
             <time datetime={postData.data.date.toString()} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, true)}</time>
-        </header>
+        </section>
 
-        <nav class="sticky top-12 bg-neutral-100/70 rounded-lg px-2.5 py-1 dark:bg-neutral-800/70 backdrop-blur-xl">
-            <details>
-                <summary class="cursor-pointer">目录</summary>
-                <ul id="PostCatalog" class="flex flex-col  text-sm">
-                    目录加载中...
-                </ul>
-            </details>
-        </nav>
+        <Content />
 
-        <div id="PostContent">
-            <Content />
-        </div>
-
-        <footer class="my-16">
-            <div class="flex items-center">
-                <div class="text-xs text-neutral-500 rounded-full border border-neutral-400 px-2 shrink-0 dark:text-neutral-600 dark:border-neutral-600">End of reading</div>
-                <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
-            </div>
-            <div class="text-sm text-justify text-neutral-500 dark:text-neutral-600">
-                <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
-                {postData.data.upDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.upDate.toString()}>{formatDate(postData.data.upDate, true)}</time></p>}
-            </div>
-        </footer>
     </AtricleLayout>
+
+    <section class="my-16">
+        <div class="flex items-center">
+            <div class="text-xs text-neutral-500 rounded-full border border-neutral-400 px-2 shrink-0 dark:text-neutral-600 dark:border-neutral-600">End of reading</div>
+            <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
+        </div>
+        <div class="text-sm text-justify text-neutral-500 *:my-5 dark:text-neutral-600">
+            <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
+            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toString()}>{formatDate(postData.data.updateDate, true)}</time></p>}
+        </div>
+    </section>
 
     <Comment client:load/>
 
 </PageLayout>
 
-<script is:inline>
-    document.addEventListener('astro:page-load', function(){
-        const postContent =document.getElementById('PostContent');
-        const postCatalog =document.getElementById('PostCatalog');
-
-        const headers= postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
-
-        if(headers.length > 0){
-            postCatalog.innerHTML = '';
-            headers.forEach(function(header){
-                const listItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.href = '#'+header.id;
-                link.textContent = header.textContent;
-                listItem.appendChild(link);
-                postCatalog.appendChild(listItem);
-            });
-        }else{
-            postCatalog.innerHTML = '没有目录';
-        }
-       
-    });
-</script>

@@ -5,7 +5,7 @@ const blogCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         date: z.coerce.date(),
-        upDate: z.coerce.date().optional(),
+        updateDate: z.coerce.date().optional(),
         draft: z.boolean().default(false),
         img: z.array(z.object({
             url: z.string(),
@@ -14,9 +14,9 @@ const blogCollection = defineCollection({
     }),
 });
 
-const friendsColleection = defineCollection({
+const friendsCollection = defineCollection({
     type: 'data',
-    schema: ({ image }) => z.array(
+    schema: z.array(
         z.object({
             name: z.string(),
             desc: z.string(),
@@ -32,5 +32,5 @@ const friendsColleection = defineCollection({
 
 export const collections = {
     blog: blogCollection,
-    friends: friendsColleection,
+    friends: friendsCollection,
 };
