@@ -13,7 +13,7 @@ const { Content } = await postData.render();
     <AtricleLayout>
         <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
         <section class="mb-8">
-            <time datetime={postData.data.date.toString()} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, true)}</time>
+            <time datetime={postData.data.date.toString().slice(0,10)} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, true)}</time>
         </section>
 
         <Content />
@@ -27,7 +27,7 @@ const { Content } = await postData.render();
         </div>
         <div class="text-sm text-justify text-neutral-500 *:my-5 dark:text-neutral-600">
             <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
-            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toString()}>{formatDate(postData.data.updateDate, true)}</time></p>}
+            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toString().slice(0,10)}>{formatDate(postData.data.updateDate, true)}</time></p>}
         </div>
     </section>
 
