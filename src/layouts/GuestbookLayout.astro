@@ -1,6 +1,6 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
-import Comment from "../components/Comment";
+import Comments from "../components/Comments.astro";
 import Details from "../components/Details.astro";
 
 const { frontmatter } = Astro.props
@@ -12,6 +12,6 @@ const { frontmatter } = Astro.props
     </Details>
 
     <section class="pt-8">
-        <Comment client:load/>
+        <Comments />
     </section>
 </PageLayout>
