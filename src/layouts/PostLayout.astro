@@ -1,8 +1,8 @@
 ---
-import Comment from "../components/Comment";
 import { formatDate } from "../utils/formatDate";
 import PageLayout from "./PageLayout.astro";
 import AtricleLayout from "./ArticleLayout.astro";
+import Comments from "../components/Comments.astro";
 
 const { postData } = Astro.props;
 const { Content } = await postData.render();
@@ -15,7 +15,7 @@ const { Content } = await postData.render();
         <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center mt-2 mb-8 text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
             <h2 class="sr-only">作者和发布时间</h2>
-            <p><time datetime={postData.data.date.toString().slice(0,10)} class="">{formatDate(postData.data.date, 'zh')}</time></p>
+            <p><time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')}</time></p>
             {postData.data.author && <p>作者：{postData.data.author}</p>}
         </section>
 
@@ -23,7 +23,7 @@ const { Content } = await postData.render();
 
     </AtricleLayout>
 
-    <section class="my-16 text-neutral-500 dark:text-neutral-600">
+    <section class="my-16 text-neutral-400 dark:text-neutral-600">
         <h2 class="sr-only">版权说明和更新时间</h2>
         <div class="flex items-center">
             <div class="text-xs rounded-full border border-neutral-400 px-2 shrink-0 dark:border-neutral-600">End of reading</div>
@@ -31,13 +31,13 @@ const { Content } = await postData.render();
         </div>
         <div class="text-sm text-justify *:my-5">
             <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
-            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={formatDate(postData.data.updateDate,  "datetime")}>{formatDate(postData.data.updateDate, 'zh')}</time></p>}
+            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toISOString()}>{formatDate(postData.data.updateDate, 'zh')}</time></p>}
         </div>
     </section>
 
     <section>
         <h2 class="sr-only">留言</h2>
-        <Comment client:load/>
+         <Comments client:load/>
     </section>
 
 </PageLayout>
