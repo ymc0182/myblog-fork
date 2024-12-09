@@ -3,12 +3,9 @@ import { formatDate } from "../utils/formatDate";
 import PageLayout from "./PageLayout.astro";
 import AtricleLayout from "./ArticleLayout.astro";
 import Comments from "../components/Comments.astro";
-import { getPublicationDays } from "../utils/getPublicationDays";
 
 const { postData } = Astro.props;
 const { Content } = await postData.render();
-
-const pubDays = getPublicationDays(postData.data.date, postData.data.updateDate)
 ---
 
 <PageLayout pageName = "post" title = {postData.data.title}>
@@ -16,15 +13,13 @@ const pubDays = getPublicationDays(postData.data.date, postData.data.updateDate)
     <AtricleLayout>
         <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center mt-2 mb-8 text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
-            <h2 class="sr-only">作者和发布时间</h2>
-            <p><time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')} （{pubDays}天前）</time></p>
-            {postData.data.author && <p>作者：{postData.data.author}</p>}
+            <time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')}</time>
+            {postData.data.author && <span>作者：{postData.data.author}</span>}
         </section>
         <Content />
     </AtricleLayout>
 
     <section class="my-16 text-neutral-400 dark:text-neutral-600">
-        <h2 class="sr-only">版权说明和更新时间</h2>
         <div class="flex items-center">
             <div class="text-xs rounded-full border border-neutral-400 px-2 shrink-0 dark:border-neutral-600">End of reading</div>
             <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
