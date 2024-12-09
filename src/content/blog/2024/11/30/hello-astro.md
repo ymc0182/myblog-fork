@@ -1,5 +1,6 @@
 ---
 title: 'Hello Astro'
+author: 'yuan'
 date: 2024-11-30
 updateDate: 2024-11-30
 img: [

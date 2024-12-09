@@ -11,29 +11,34 @@ const { Content } = await postData.render();
 <PageLayout pageName = "post" title = {postData.data.title}>
 
     <AtricleLayout>
-        <header class="mb-8">
-            <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
-            <time datetime={postData.data.date.toString().slice(0,10)} class="text-sm text-neutral-500 dark:text-neutral-600">{formatDate(postData.data.date, 'zh')}</time>
         
-        </header>
+        <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
+        <section class="flex flex-wrap gap-2.5 items-center mt-2 mb-8 text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
+            <h2 class="sr-only">作者和发布时间</h2>
+            <p><time datetime={postData.data.date.toString().slice(0,10)} class="">{formatDate(postData.data.date, 'zh')}</time></p>
+            {postData.data.author && <p>作者：{postData.data.author}</p>}
+        </section>
 
-        <div id="PostContent">
-            <Content />
-        </div>
+        <Content />
         
-        <footer class="my-16 text-neutral-500 dark:text-neutral-600">
-            <div class="flex items-center">
-                <div class="text-xs rounded-full border border-neutral-400 px-2 shrink-0 dark:border-neutral-600">End of reading</div>
-                <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
-            </div>
-            <div class="text-sm text-justify *:my-5">
-                <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
-                {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={formatDate(postData.data.updateDate,  "datetime")}>{formatDate(postData.data.updateDate, 'zh')}</time></p>}
-            </div>
-        </footer>
     </AtricleLayout>
 
-    <Comment client:load/>
+    <section class="my-16 text-neutral-500 dark:text-neutral-600">
+        <h2 class="sr-only">版权说明和更新时间</h2>
+        <div class="flex items-center">
+            <div class="text-xs rounded-full border border-neutral-400 px-2 shrink-0 dark:border-neutral-600">End of reading</div>
+            <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
+        </div>
+        <div class="text-sm text-justify *:my-5">
+            <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
+            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={formatDate(postData.data.updateDate,  "datetime")}>{formatDate(postData.data.updateDate, 'zh')}</time></p>}
+        </div>
+    </section>
+
+    <section>
+        <h2 class="sr-only">留言</h2>
+        <Comment client:load/>
+    </section>
 
 </PageLayout>
 

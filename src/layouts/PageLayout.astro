@@ -7,10 +7,11 @@ import BgGridPattern from "../components/BgGridPattern.astro";
 type Props = {
     pageName?: string,
     title?: string,
-    description?: string
+    description?: string,
+    isPadding?: boolean
 }
 
-const { pageName, title, description } = Astro.props;
+const { pageName, title, description, isPadding = true } = Astro.props;
 ---
 
 <BaseLayout title = {title} description = {description}>
@@ -19,7 +20,7 @@ const { pageName, title, description } = Astro.props;
 
     <Header pageName = {pageName} />
 
-    <main id="main" class="container mx-auto px-8 py-16">
+    <main id="main" class={`container mx-auto ${isPadding && "px-8 py-16"}`}>
         <slot />
     </main>
 
