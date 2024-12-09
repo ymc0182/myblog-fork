@@ -1,5 +1,6 @@
 ---
 title: '测试文章'
+author: 'Mr.Yuan'
 date: 2024-11-30
 updateDate: 2024-11-30
 img: [

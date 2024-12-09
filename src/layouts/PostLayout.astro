@@ -3,24 +3,24 @@ import { formatDate } from "../utils/formatDate";
 import PageLayout from "./PageLayout.astro";
 import AtricleLayout from "./ArticleLayout.astro";
 import Comments from "../components/Comments.astro";
+import { getPublicationDays } from "../utils/getPublicationDays";
 
 const { postData } = Astro.props;
 const { Content } = await postData.render();
+
+const pubDays = getPublicationDays(postData.data.date, postData.data.updateDate)
 ---
 
 <PageLayout pageName = "post" title = {postData.data.title}>
 
     <AtricleLayout>
-        
         <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center mt-2 mb-8 text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
             <h2 class="sr-only">作者和发布时间</h2>
-            <p><time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')}</time></p>
+            <p><time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')} （{pubDays}天前）</time></p>
             {postData.data.author && <p>作者：{postData.data.author}</p>}
         </section>
-
         <Content />
-
     </AtricleLayout>
 
     <section class="my-16 text-neutral-400 dark:text-neutral-600">
