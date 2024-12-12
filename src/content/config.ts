@@ -12,6 +12,7 @@ const blogCollection = defineCollection({
             url: z.string(),
             alt: z.string(),
         })).optional(),
+        mood: z.number().optional(),
     }),
 });
 
