@@ -8,7 +8,7 @@ const { postData } = Astro.props;
 const { Content } = await postData.render();
 ---
 
-<PageLayout pageName = "post" title = {postData.data.title}>
+<PageLayout pageName = "post" title = {postData.data.title} description = {postData.data.description}>
 
     <AtricleLayout>
         <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
