@@ -12,9 +12,6 @@ export default defineConfig({
     enabled: false
   },
 
-  site: 'https://demo.jb18.cm',
-
-  prefetch: {
-    defaultStrategy: 'viewport'
-  },
+  site: 'https://jb18.cm',
+  
 });
