@@ -88,14 +88,13 @@ const { pageName } = Astro.props;
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => initHeader());
     document.addEventListener('astro:after-swap', () => initHeader());
-    document.addEventListener('astro:page-load', () => {
-        document.getElementById('loadingIcon').style.display = 'none'
-        document.getElementById('main').classList.remove('blur')
-    });
     document.addEventListener('astro:before-preparation', () => {
         document.getElementById('loadingIcon').style.display = 'block'
         document.getElementById('main').classList.add('blur')
+    });
+    document.addEventListener('astro:page-load', () => {
+        document.getElementById('loadingIcon').style.display = 'none'
+        document.getElementById('main').classList.remove('blur')
     });
 </script>
