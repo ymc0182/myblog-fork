@@ -78,6 +78,7 @@ const { title, description } = Astro.props;
         });
     }
 
+    document.addEventListener('DOMContentLoaded', () => init());
     document.addEventListener('astro:after-swap', () => init());
     document.addEventListener('astro:before-preparation', () => {
         document.getElementById('loadingIcon').style.display = 'block'
