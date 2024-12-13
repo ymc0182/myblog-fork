@@ -14,8 +14,6 @@ export default defineConfig({
 
   site: 'https://jb18.cm',
 
-  prefetch: {
-    prefetchAll: true
-  }
+  prefetch: false
   
 });
