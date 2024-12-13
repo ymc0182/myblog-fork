@@ -13,7 +13,5 @@ export default defineConfig({
   },
 
   site: 'https://jb18.cm',
-
-  prefetch: false
   
 });
