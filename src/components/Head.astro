@@ -19,7 +19,7 @@ const { title, description } = Astro.props;
 <ClientRouter />
 
 <script>
-    const init = () => {
+    function init() {
         let headerElement = document.getElementById('header');
         let avatarElement = document.getElementById('avatar');
         let HeaderButtonBackToTopElement = document.getElementById('HeaderButtonBackToTop');
@@ -33,7 +33,7 @@ const { title, description } = Astro.props;
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
     }
 
-    const updateTheme = () => {
+    function updateTheme() {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         } else {
@@ -41,7 +41,7 @@ const { title, description } = Astro.props;
         }
     }
 
-    const stickyHeader = (headerElement: HTMLElement, HeaderButtonBackToTopElement: HTMLElement, avatarElement: HTMLElement) => {
+    function stickyHeader(headerElement: HTMLElement, HeaderButtonBackToTopElement: HTMLElement, avatarElement: HTMLElement) {
         const stickyHeaderClass = [
             'border-b',
             'border-neutral-200/70',
@@ -70,7 +70,7 @@ const { title, description } = Astro.props;
         }, { passive: true })
     }
 
-    const scrollToTop = (event: MouseEvent) => {
+    function scrollToTop(event: MouseEvent) {
         event.preventDefault();
         window.scrollTo({
             top: 0,

@@ -10,8 +10,8 @@ export default {
 			typography: ({ theme }) => ({
 				post: {
 				  	css: {
-						'--tw-prose-body': theme('colors.neutral[800]'),
-						'--tw-prose-headings': theme('colors.neutral[800]'),
+						'--tw-prose-body': theme('colors.neutral[700]'),
+						'--tw-prose-headings': theme('colors.neutral[950]'),
 						'--tw-prose-lead': theme('colors.neutral[700]'),
 						'--tw-prose-links': theme('colors.neutral[600]'),
 						'--tw-prose-bold': theme('colors.neutral[800]'),
@@ -26,7 +26,7 @@ export default {
 						'--tw-prose-pre-bg': theme('colors.neutral[900]'),
 						'--tw-prose-th-borders': theme('colors.neutral[400]'),
 						'--tw-prose-td-borders': theme('colors.neutral[200]'),
-						'--tw-prose-invert-body': theme('colors.neutral[400]'),
+						'--tw-prose-invert-body': theme('colors.neutral[500]'),
 						'--tw-prose-invert-headings': theme('colors.neutral[400]'),
 						'--tw-prose-invert-lead': theme('colors.neutral[300]'),
 						'--tw-prose-invert-links': theme('colors.neutral[500]'),

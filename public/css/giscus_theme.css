@@ -211,3 +211,7 @@ body {
     font-weight: 400;
 }
 
+.gsc-left-header em {
+    display: none;
+}
+
