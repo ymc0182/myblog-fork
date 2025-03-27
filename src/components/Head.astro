@@ -10,8 +10,12 @@ type Props = {
 const { title, description } = Astro.props;
 ---
 <meta charset="UTF-8">
+
 <link rel="icon" type="image/x-icon" href={SITE.AVATAR}>
 <link rel="alternate" type="application/rss+xml" title={SITE.TITLE} href={new URL("rss.xml", Astro.site)} />
+<link rel="preconnect" href="https://giscus.app" crossorigin>
+<link rel="dns-prefetch" href="https://giscus.app">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{ title && title + " - " }{SITE.TITLE}</title>
 <meta name="description" content  = { description ? description : SITE.DESCRIPTION } />
@@ -19,17 +23,19 @@ const { title, description } = Astro.props;
 <ClientRouter />
 
 <script>
+
     function init() {
-        let headerElement = document.getElementById('header');
-        let avatarElement = document.getElementById('avatar');
-        let HeaderButtonBackToTopElement = document.getElementById('HeaderButtonBackToTop');
-        let HeaderButtonBackElement = document.getElementById('HeaderButtonBack');
+        const headerElement = document.getElementById('header');
+        const avatarElement = document.getElementById('avatar');
+        const HeaderButtonBackToTopElement = document.getElementById('HeaderButtonBackToTop');
+        const HeaderButtonBackElement = document.getElementById('HeaderButtonBack');
 
         HeaderButtonBackToTopElement?.addEventListener('click', (event) => scrollToTop(event));
         HeaderButtonBackElement?.addEventListener('click', () => window.history.back());
 
         stickyHeader(headerElement, HeaderButtonBackToTopElement, avatarElement);
-        updateTheme();
+        loadComments();
+        // updateTheme();
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
     }
 
@@ -78,15 +84,74 @@ const { title, description } = Astro.props;
         });
     }
 
+    function loadComments(){
+        const LoadCommentsButton = document.getElementById('LoadCommentsButton')
+        let isLoadComments = false
+
+        LoadCommentsButton?.addEventListener('click', function(){
+
+            if(isLoadComments === true) return null;
+            isLoadComments = true
+
+            const translations = {
+                loading: '正在加载评论组件...',
+                success: '评论组件加载完成 🎉',
+                fail: '加载失败，点击重试',
+                timeout: '加载超时，点击重试'
+            }
+
+            LoadCommentsButton.textContent = translations.loading
+
+            const script = document.createElement('script')
+            script.src = 'https://giscus.app/client.js'
+            script.setAttribute('data-repo', 'ymc0182/myblog')
+            script.setAttribute('data-repo-id', 'R_kgDOMiAgoA')
+            script.setAttribute('data-category', 'General')
+            script.setAttribute('data-category-id', 'DIC_kwDOMiAgoM4Chifv')
+            script.setAttribute('data-mapping', 'title')
+            script.setAttribute('data-strict', '0')
+            script.setAttribute('data-reactions-enabled', '1')
+            script.setAttribute('data-emit-metadata', '0')
+            script.setAttribute('data-input-position', 'top')
+            script.setAttribute('data-theme', 'https://res.jb18.cm/css/giscus_theme.css')
+            script.setAttribute('data-lang', 'zh-CN')
+            script.crossOrigin = 'anonymous'
+            script.async = true
+
+            const timeout = setTimeout(() => {
+                script.remove()
+                LoadCommentsButton.textContent = translations.timeout
+                isLoadComments = false
+            }, 15000)
+
+            script.onload = () => {
+                clearTimeout(timeout)
+                LoadCommentsButton.textContent = translations.success
+                setTimeout(() => {
+                    LoadCommentsButton.classList.add('hidden')
+                }, 2000)
+            }
+
+            script.onerror = () => {
+                clearTimeout(timeout)
+                LoadCommentsButton.textContent = translations.fail
+                isLoadComments = false
+            }
+
+            document.body.appendChild(script)
+
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => init());
     document.addEventListener('astro:after-swap', () => init());
     document.addEventListener('astro:before-preparation', () => {
-        document.getElementById('loadingIcon').style.display = 'block'
-        document.getElementById('main').classList.add('blur')
+        document.getElementById('loadingIcon').style.display = 'flex'
+        // document.getElementById('main').classList.add('blur')
     });
     document.addEventListener('astro:page-load', () => {
         document.getElementById('loadingIcon').style.display = 'none'
-        document.getElementById('main').classList.remove('blur')
+        // document.getElementById('main').classList.remove('blur')
     });
     document.body.addEventListener('touchstart', () => {}, { passive: true });
 </script>

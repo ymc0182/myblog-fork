@@ -20,7 +20,7 @@ const { pageName, title, description, isPadding = true } = Astro.props;
 
     <Header pageName = {pageName} />
 
-    <main id="main" class={`container mx-auto blur ${isPadding && "px-8 py-16"}`}>
+    <main id="main" class={`container mx-auto ${isPadding && "px-8 py-16"}`}>
         <slot />
     </main>
 
