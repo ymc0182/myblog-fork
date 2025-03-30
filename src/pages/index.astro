@@ -2,10 +2,10 @@
 import { getCollection } from "astro:content"
 import PageLayout from "../layouts/PageLayout.astro"
 import { SITE } from "../consts";
-import BlogCard from "../components/BlogCard.astro";
+import PostCard from "../components/PostCard.astro";
 
-const blog = (await getCollection("blog"))
-.filter(post => !post.data.draft)
+const posts = (await getCollection("post"))
+.filter(posts => !posts.data.draft)
 .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 .slice(0, SITE.NUM_BLOG_ON_HOMEPAGE);
 
@@ -20,8 +20,8 @@ const blog = (await getCollection("blog"))
             <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
         </svg>
     </h2>
-    {blog.map(post => (
-        <BlogCard entry={ post } />
+    {posts.map(post => (
+        <PostCard entry={ post } />
     ))}
 </section>
 

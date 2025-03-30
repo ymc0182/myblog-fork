@@ -1,8 +1,8 @@
 import { z, defineCollection} from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
-const blogCollection = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
+const postCollection = defineCollection({
+    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/posts" }),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -18,23 +18,21 @@ const blogCollection = defineCollection({
     }),
 });
 
-const friendsCollection = defineCollection({
-    type: 'data',
-    schema: z.array(
-        z.object({
-            name: z.string(),
-            desc: z.string(),
-            avatar: z.string(),
-            social: z.object({
-                blog: z.string().optional(),
-                twitter: z.string().optional(),
-                github: z.string().optional(),
-            }),
-        }),
-    ),
+const friendCollection = defineCollection({
+    loader: glob({ pattern: '**/[^_]*.{yaml,yml,json}', base: "./src/content/friends" }),
+    schema: z.object({
+        name: z.string(),
+        desc: z.string(),
+        avatar: z.string().url(),
+        social: z.object({
+            blog: z.string().optional(),
+            twitter: z.string().optional(),
+            github: z.string().optional()
+        })
+    })
 });
 
 export const collections = {
-    blog: blogCollection,
-    friends: friendsCollection,
+    post: postCollection,
+    friend: friendCollection,
 };

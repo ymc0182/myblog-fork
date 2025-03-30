@@ -1,7 +1,7 @@
 ---
 import { formatDate } from "../utils/formatDate";
 import PageLayout from "./PageLayout.astro";
-import AtricleLayout from "./ArticleLayout.astro";
+import Article from "../components/Article.astro";
 import Comments from "../components/Comments.astro";
 import { render } from "astro:content";
 
@@ -11,14 +11,14 @@ const { Content } = await render(postData);
 
 <PageLayout pageName = "post" title = {postData.data.title} description = {postData.data.description}>
 
-    <AtricleLayout>
-        <h1 class="text-2xl mb-2" transition:name={postData.slug}>{postData.data.title}</h1>
+    <Article>
+        <h1 class="text-2xl mb-2" transition:name={postData.id}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center my-4 text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
             <time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')}</time>
             {postData.data.author && <span>作者：{postData.data.author}</span>}
         </section>
         <Content />
-    </AtricleLayout>
+    </Article>
 
     <section class="my-16 text-neutral-400 dark:text-neutral-600">
         <div class="flex items-center">
