@@ -147,11 +147,11 @@ const { title, description } = Astro.props;
     document.addEventListener('astro:after-swap', () => init());
     document.addEventListener('astro:before-preparation', () => {
         document.getElementById('loadingIcon').style.display = 'flex'
-        // document.getElementById('main').classList.add('blur')
+        document.getElementById('main').classList.add('blur')
     });
     document.addEventListener('astro:page-load', () => {
         document.getElementById('loadingIcon').style.display = 'none'
-        // document.getElementById('main').classList.remove('blur')
+        document.getElementById('main').classList.remove('blur')
     });
     document.body.addEventListener('touchstart', () => {}, { passive: true });
 </script>

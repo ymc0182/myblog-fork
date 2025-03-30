@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from "../utils/formatDate";
 
 type Props = {
     entry: CollectionEntry<'post'>;
@@ -8,9 +7,11 @@ type Props = {
 
 const { entry } = Astro.props;
 
+const postDate = Intl.DateTimeFormat("zh", { month: "2-digit", day:"2-digit"}).format(entry.data.date);
+
 ---
 
-<article class="flex flex-col">
-    <h3 transition:name={entry.id}><a href={`/${entry.collection}/${entry.id}`} class="hover:text-blue-500">{entry.data.title}</a></h3>
-    <time datetime={entry.data.date.toISOString()} class="text-xs text-neutral-500 dark:text-neutral-600">{formatDate(entry.data.date)}</time>
+<article class="flex gap-2">
+    <time datetime={entry.data.date.toISOString()} class="shrink-0 text-neutral-400 dark:text-neutral-600">{postDate}</time>
+    <h3 class="w-full" transition:name={entry.id}><a href={`/${entry.collection}/${entry.id}`} class="hover:text-blue-500">{entry.data.title}</a></h3>
 </article>
