@@ -14,10 +14,10 @@ const { frontmatter } = Astro.props
         <slot />
     </Details>
     
-    <section class="pt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
+    <div class="pt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
         {friends.map(friend => (
             <FriendCard entry={friend.data} />
         ))}
-    </section>
+    </div>
 </PageLayout>
 
