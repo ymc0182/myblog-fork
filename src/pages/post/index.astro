@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "../../layouts/PageLayout.astro"
+import PostCard from "../../components/PostCard.astro";
+
+const posts = (await getCollection("post"))
+.filter(posts => !posts.data.draft)
+.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {});
+
+const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<PageLayout pageName="posts" title="文章">
+
+    <div class="space-y-6">
+        {sortedYears.map(year => (
+            <section class="space-y-4">
+                <h2 class="font-bold">{year}</h2>
+                {postsByYear[year].map(post => (
+                    <PostCard entry={post} />
+                ))}
+            </section>
+        ))}
+    </div>
+    
+</PageLayout>

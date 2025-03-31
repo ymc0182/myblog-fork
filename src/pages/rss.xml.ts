@@ -7,9 +7,9 @@ import { SITE } from "../consts";
 const parser = new MarkdownIt();
 
 export async function GET(context){
-    const blog = (await getCollection("blog")).filter(post => !post.data.draft);
+    const posts = (await getCollection("post")).filter(post => !post.data.draft);
 
-    const items = [...blog].sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+    const items = [...posts].sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 
     return rss({
         title: SITE.TITLE,
@@ -18,7 +18,7 @@ export async function GET(context){
         items: items.map((item) => ({
             title: item.data.title,
             pubDate: item.data.date,
-            link: `/${item.collection}/${item.slug}`,
+            link: `/${item.collection}/${item.id}`,
             content: sanitizeHtml(parser.render(item.body), {
                 allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
               }),
