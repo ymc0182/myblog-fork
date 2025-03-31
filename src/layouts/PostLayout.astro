@@ -35,3 +35,17 @@ const { Content } = await render(postData);
 
 </PageLayout>
 
+<!-- <script is:inline>
+    function handleMessage(event) {
+        if (event.origin !== 'https://giscus.app') return;
+        if (!(typeof event.data === 'object' && event.data.giscus)) return;
+
+        const giscusData = event.data.giscus;
+
+        console.log(giscusData)
+    }
+
+    window.addEventListener('message', handleMessage);
+    window.removeEventListener('message', handleMessage);
+</script> -->
+
