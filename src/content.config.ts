@@ -1,8 +1,8 @@
 import { z, defineCollection} from 'astro:content';
-import { file, glob } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 
-const postCollection = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/posts" }),
+const blogCollection = defineCollection({
+    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -19,7 +19,7 @@ const postCollection = defineCollection({
 });
 
 const friendCollection = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.{yaml,yml,json}', base: "./src/content/friends" }),
+    loader: glob({ pattern: '**/[^_]*.{yaml,yml,json}', base: "./src/content/friend" }),
     schema: z.object({
         name: z.string(),
         desc: z.string(),
@@ -33,6 +33,6 @@ const friendCollection = defineCollection({
 });
 
 export const collections = {
-    post: postCollection,
+    blog: blogCollection,
     friend: friendCollection,
 };

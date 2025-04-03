@@ -3,7 +3,7 @@ import { getCollection } from "astro:content"
 import PageLayout from "../../layouts/PageLayout.astro"
 import PostCard from "../../components/PostCard.astro";
 
-const posts = (await getCollection("post"))
+const posts = (await getCollection("blog"))
 .filter(posts => !posts.data.draft)
 .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
