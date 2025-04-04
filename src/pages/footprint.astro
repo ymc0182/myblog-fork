@@ -1,6 +1,7 @@
 ---
 import Article from "../components/Article.astro";
 import Comments from "../components/Comments.astro";
+import FootprintMap from "../components/FootprintMap.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 ---
@@ -12,68 +13,10 @@ import PageLayout from "../layouts/PageLayout.astro";
             <p>用高德绘制的足迹地图，显示了我去过的地方，因为需要手动一个个查找地名添加编号所以只标注了地级市。</p>
         </Article>
 
-        <div id="mapContainer" class="w-full aspect-square bg-neutral-400"  style="color: cornflowerblue;"></div>
+        <FootprintMap />
 
         <Comments />
     </div>
 </PageLayout>
 
 
-<script is:inline src="https://webapi.amap.com/maps?v=2.0&key=887dca547acd7576124f953d5d37a8b3"></script>
-<script is:inline >
-
-    function footprintMap(){
-
-        const mapContainerElement =  document.getElementById('mapContainer')
-        if(!mapContainerElement) return;
-
-        var adCode = [
-
-        513200,610900,620400,610300,530500,511900,520500,510100,532300,532900,533100,510600,533400,623000,513300,510800,640400,632200,632500,610700,
-
-        632300,441300,530100,620100,530700,530900,510700,511300,620800,611000,510900,610200,610500,620600,220403,610400,511800,511500,620700,530600,430902,610100
-
-
-        ];
-
-        const map = new AMap.Map("mapContainer", {
-            zoom: 6.2,
-            center: [108.939645,34.343207],
-            pitch: 30,
-            // isHotspot:false,
-            defaultCursor:'pointer',
-            
-        });
-
-        var disProvince = new AMap.DistrictLayer.Province({
-            zIndex: 12,
-            zooms: [2, 15],
-            adcode: adCode,
-            depth: 2, //设置数据显示层级，0：显示国家面，1：显示省级，当国家为中国时设置depth为2的可以显示市一级
-            styles: {
-                'fill': 'rgba(100,149,237,0.1)', //编号区域颜色
-                'province-stroke': 'blue', //编号区域边框
-                'city-stroke': 'cornflowerblue', // 中国地级市边界
-                'county-stroke': 'rgba(100,149,237,0.2)' // 中国区县边界
-            },
-            
-        });
-
-        map.add(disProvince);
-            
-        document.getElementsByClassName('amap-logo')[0].innerHTML = ''
-        document.getElementsByClassName('amap-copyright')[0].innerHTML = ''
-
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            map.setMapStyle("amap://styles/dark");
-            map.setMapStyle({
-                'fill': 'skyblue'
-            });
-        } else {
-            map.setMapStyle("amap://styles/light");
-        }
-    }
-
-    document.addEventListener('astro:page-load', footprintMap);
-
-</script>

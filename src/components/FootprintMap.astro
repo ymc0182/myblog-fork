@@ -1,0 +1,86 @@
+<div id="mapContainer" class="w-full aspect-square bg-neutral-400 relative overflow-hidden" ></div>
+
+
+<script is:inline data-astro-rerun src="https://webapi.amap.com/maps?v=2.0&key=887dca547acd7576124f953d5d37a8b3"></script>
+<script is:inline>
+    let mapInstance = null;
+
+    function createMap() {
+        const mapContainer = document.getElementById('mapContainer');
+        if (!mapContainer) return;
+
+        // 确保先清理可能存在的旧地图实例
+        destroyMap();
+
+        const adCode = [
+            513200,610900,620400,610300,530500,511900,520500,510100,532300,532900,533100,510600,533400,623000,513300,510800,640400,632200,632500,610700,
+            632300,441300,530100,620100,530700,530900,510700,511300,620800,611000,510900,610200,610500,620600,220403,610400,511800,511500,620700,530600,430902,610100
+        ];
+
+        try {
+            // 创建新的地图实例
+            mapInstance = new AMap.Map("mapContainer", {
+                zoom: 6.2,
+                center: [108.939645,34.343207],
+                pitch: 30,
+                defaultCursor: 'pointer',
+            });
+
+            const disProvince = new AMap.DistrictLayer.Province({
+                zIndex: 12,
+                zooms: [2, 15],
+                adcode: adCode,
+                depth: 2,
+                styles: {
+                    'fill': 'rgba(100,149,237,0.1)',
+                    'province-stroke': 'blue',
+                    'city-stroke': 'cornflowerblue',
+                    'county-stroke': 'rgba(100,149,237,0.2)'
+                },
+            });
+
+            mapInstance.add(disProvince);
+                
+            // 移除高德地图的logo和版权信息
+            const logoElement = document.getElementsByClassName('amap-logo')[0];
+            const copyrightElement = document.getElementsByClassName('amap-copyright')[0];
+            if (logoElement) logoElement.innerHTML = '';
+            if (copyrightElement) copyrightElement.innerHTML = '';
+
+            // 根据系统主题设置地图样式
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                mapInstance.setMapStyle("amap://styles/dark");
+                mapInstance.setMapStyle({
+                    'fill': 'skyblue'
+                });
+            } else {
+                mapInstance.setMapStyle("amap://styles/light");
+            }
+        } catch (error) {
+            console.error('地图初始化失败:', error);
+        }
+    }
+
+    function destroyMap() {
+        if (mapInstance) {
+            try {
+                mapInstance.destroy();
+            } catch (error) {
+                console.error('地图销毁失败:', error);
+            } finally {
+                mapInstance = null;
+                const mapContainer = document.getElementById('mapContainer');
+                if (mapContainer) {
+                    mapContainer.innerHTML = '';
+                }
+            }
+        }
+    }
+
+    // 初始化地图
+    document.addEventListener('astro:page-load', createMap);
+    
+    // 页面切换前清理地图实例
+    document.addEventListener('astro:before-preparation', destroyMap);
+    
+</script>
