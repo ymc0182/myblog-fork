@@ -14,7 +14,7 @@ const { Content } = await render(postData);
     <Article>
         <h1 class="text-2xl" transition:name={postData.id}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
-            <time datetime={postData.data.date.toISOString()} class="">{formatDate(postData.data.date, 'zh')}</time>
+            <time datetime={postData.data.date.toISOString()}>{formatDate(postData.data.date, 'zh')}</time>
             {postData.data.author && <span>作者：{postData.data.author}</span>}
         </section>
         <Content />
@@ -26,26 +26,11 @@ const { Content } = await render(postData);
             <div class="border-t border-dashed border-neutral-400 w-full dark:border-neutral-600"></div>
         </div>
         <div class="text-sm text-justify *:my-5">
-            <p>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</p>
-            {postData.data.updateDate && <p>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toISOString()}>{formatDate(postData.data.updateDate, 'zh')}</time></p>}
+            <div>如未另行说明，那么本页面中的内容已根据知识共享署名 4.0 许可获得了许可，并且代码示例已根据 Apache 2.0 许可获得了许可。</div>
+            {postData.data.updateDate && <div>最后更新时间 (UTC+8)：<time datetime={postData.data.updateDate.toISOString()}>{formatDate(postData.data.updateDate, 'zh')}</time></div>}
         </div>
     </div>
 
     <Comments />
 
 </PageLayout>
-
-<!-- <script is:inline>
-    function handleMessage(event) {
-        if (event.origin !== 'https://giscus.app') return;
-        if (!(typeof event.data === 'object' && event.data.giscus)) return;
-
-        const giscusData = event.data.giscus;
-
-        console.log(giscusData)
-    }
-
-    window.addEventListener('message', handleMessage);
-    window.removeEventListener('message', handleMessage);
-</script> -->
-
