@@ -1,7 +1,10 @@
+---
+const key = import.meta.env.AMAP_KEY;
+---
+
 <div id="mapContainer" class="w-full aspect-square bg-neutral-400 relative overflow-hidden" ></div>
 
-
-<script is:inline data-astro-rerun src="https://webapi.amap.com/maps?v=2.0&key=887dca547acd7576124f953d5d37a8b3"></script>
+<script is:inline data-astro-rerun src={ "https://webapi.amap.com/maps?v=2.0&key=" + key}></script>
 <script is:inline>
     let mapInstance = null;
 
