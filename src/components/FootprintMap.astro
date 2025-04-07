@@ -6,6 +6,7 @@ const key = import.meta.env.AMAP_KEY;
 
 <script is:inline data-astro-rerun src={ "https://webapi.amap.com/maps?v=2.0&key=" + key}></script>
 <script is:inline>
+    
     let mapInstance = null;
 
     function createMap() {
