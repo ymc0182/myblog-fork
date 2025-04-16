@@ -12,7 +12,7 @@ const { Content } = await render(postData);
 <PageLayout pageName = "post" title = {postData.data.title} description = {postData.data.description}>
 
     <Article>
-        <h1 class="text-2xl" transition:name={postData.id}>{postData.data.title}</h1>
+        <h1 class="text-4xl" transition:name={postData.id}>{postData.data.title}</h1>
         <section class="flex flex-wrap gap-2.5 items-center text-sm text-neutral-400 dark:text-neutral-600 *:m-0">
             <time datetime={postData.data.date.toISOString()}>{formatDate(postData.data.date, 'zh')}</time>
             {postData.data.author && <span>作者：{postData.data.author}</span>}

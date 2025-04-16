@@ -11,7 +11,7 @@ const { title, description } = Astro.props;
         <Head title = {title} description = {description}/>
     </head>
 	
-    <body class="h-full w-full scroll-smooth text-neutral-800 dark:bg-neutral-900 dark:text-neutral-400" ontouchstart="ontouchstart">
+    <body class="size-full scroll-smooth text-neutral-800 text-wrap break-all dark:bg-neutral-900 dark:text-neutral-400" ontouchstart="ontouchstart">
         <slot />
     </body>
 </html>
