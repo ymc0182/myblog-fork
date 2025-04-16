@@ -7,7 +7,7 @@ import { SITE } from "../consts";
 const parser = new MarkdownIt();
 
 export async function GET(context){
-    const posts = (await getCollection("post")).filter(post => !post.data.draft);
+    const posts = (await getCollection("blog")).filter(post => !post.data.draft);
 
     const items = [...posts].sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 

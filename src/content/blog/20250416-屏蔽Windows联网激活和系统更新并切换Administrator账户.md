@@ -27,9 +27,11 @@ OOBE\BYPASSNRO
 
 1. <kbd>Win + R</kbd> 输入 “regedit” 打开注册表，依次打开 `\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings`。
 
-2. 右键 > 新建 > DWORD（32位）值，命名为 `FlightSettingsMaxPauseDays`。
+2. 右键 > 新建 > DWORD（32位）值，命名为 `FlightSettingsMaxPauseDays`， 双击打开。
 
-3. 基数改为十进制，数值为暂停的天数。
+3. 基数改为十进制，数值为暂停的天数; 我改了 5000 暂停至2038年。
+
+4. 打开 设置 > Windows更新 > 暂停更新， 拉到底选最大的，选完显示个位数是溢出了不要紧。
 
 
 
